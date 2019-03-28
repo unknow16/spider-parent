@@ -51,6 +51,10 @@ public class BaseResult {
         return new BaseResult(200, null, data);
     }
 
+    public static BaseResult error(String msg) {
+        return new BaseResult(500, msg, null);
+    }
+
     public int getCode() {
         return code;
     }

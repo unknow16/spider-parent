@@ -30,11 +30,11 @@ public class GlobalExceptionHandler {
     public BaseResult handleException(Exception e) {
         if (e instanceof SpiderException) {
             SpiderException spiderException = (SpiderException) e;
-            return BaseResult.ok(spiderException.getMessage());
+            return BaseResult.error(spiderException.getMessage());
         }
 
         logger.error("服务运行异常", e);
         e.printStackTrace();
-        return BaseResult.ok(e.getClass());
+        return BaseResult.error(e.getClass().getName());
     }
 }
