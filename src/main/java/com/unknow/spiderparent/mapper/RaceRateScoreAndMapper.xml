@@ -1,0 +1,1118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.unknow.spiderparent.mapper.RaceRateScoreAndMapper" >
+  <resultMap id="BaseResultMap" type="com.unknow.spiderparent.entity.RaceRateScoreAnd" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="race_id" property="raceId" jdbcType="VARCHAR" />
+    <result column="s_0_0_1_0" property="s0010" jdbcType="DOUBLE" />
+    <result column="s_1_0_1_0" property="s1010" jdbcType="DOUBLE" />
+    <result column="s_0_0_2_0" property="s0020" jdbcType="DOUBLE" />
+    <result column="s_1_0_2_0" property="s1020" jdbcType="DOUBLE" />
+    <result column="s_2_0_2_0" property="s2020" jdbcType="DOUBLE" />
+    <result column="s_1_0_2_1" property="s1021" jdbcType="DOUBLE" />
+    <result column="s_2_0_2_1" property="s2021" jdbcType="DOUBLE" />
+    <result column="s_2_1_2_1" property="s2121" jdbcType="DOUBLE" />
+    <result column="s_0_0_2_1" property="s0021" jdbcType="DOUBLE" />
+    <result column="s_1_1_2_1" property="s1121" jdbcType="DOUBLE" />
+    <result column="s_0_1_2_1" property="s0121" jdbcType="DOUBLE" />
+    <result column="s_0_0_3_0" property="s0030" jdbcType="DOUBLE" />
+    <result column="s_1_0_3_0" property="s1030" jdbcType="DOUBLE" />
+    <result column="s_2_0_3_0" property="s2030" jdbcType="DOUBLE" />
+    <result column="s_3_0_3_0" property="s3030" jdbcType="DOUBLE" />
+    <result column="s_0_0_3_1" property="s0031" jdbcType="DOUBLE" />
+    <result column="s_1_0_3_1" property="s1031" jdbcType="DOUBLE" />
+    <result column="s_2_0_3_1" property="s2031" jdbcType="DOUBLE" />
+    <result column="s_2_1_3_1" property="s2131" jdbcType="DOUBLE" />
+    <result column="s_3_0_3_1" property="s3031" jdbcType="DOUBLE" />
+    <result column="s_1_1_3_1" property="s1131" jdbcType="DOUBLE" />
+    <result column="s_0_1_3_1" property="s0131" jdbcType="DOUBLE" />
+    <result column="s_0_0_1_1" property="s0011" jdbcType="DOUBLE" />
+    <result column="s_1_1_1_1" property="s1111" jdbcType="DOUBLE" />
+    <result column="s_1_0_1_1" property="s1011" jdbcType="DOUBLE" />
+    <result column="s_0_1_1_1" property="s0111" jdbcType="DOUBLE" />
+    <result column="s_0_0_2_2" property="s0022" jdbcType="DOUBLE" />
+    <result column="s_1_1_2_2" property="s1122" jdbcType="DOUBLE" />
+    <result column="s_1_0_2_2" property="s1022" jdbcType="DOUBLE" />
+    <result column="s_2_0_2_2" property="s2022" jdbcType="DOUBLE" />
+    <result column="s_0_1_2_2" property="s0122" jdbcType="DOUBLE" />
+    <result column="s_0_2_2_2" property="s0222" jdbcType="DOUBLE" />
+    <result column="s_2_1_2_2" property="s2122" jdbcType="DOUBLE" />
+    <result column="s_1_2_2_2" property="s1222" jdbcType="DOUBLE" />
+    <result column="s_2_2_2_2" property="s2222" jdbcType="DOUBLE" />
+    <result column="s_0_0_0_1" property="s0001" jdbcType="DOUBLE" />
+    <result column="s_0_1_0_1" property="s0101" jdbcType="DOUBLE" />
+    <result column="s_0_0_0_2" property="s0002" jdbcType="DOUBLE" />
+    <result column="s_0_1_0_2" property="s0102" jdbcType="DOUBLE" />
+    <result column="s_0_2_0_2" property="s0202" jdbcType="DOUBLE" />
+    <result column="s_0_1_1_2" property="s0112" jdbcType="DOUBLE" />
+    <result column="s_0_2_1_2" property="s0212" jdbcType="DOUBLE" />
+    <result column="s_1_2_1_2" property="s1212" jdbcType="DOUBLE" />
+    <result column="s_0_0_1_2" property="s0012" jdbcType="DOUBLE" />
+    <result column="s_1_1_1_2" property="s1112" jdbcType="DOUBLE" />
+    <result column="s_1_0_1_2" property="s1012" jdbcType="DOUBLE" />
+    <result column="s_0_0_0_3" property="s0003" jdbcType="DOUBLE" />
+    <result column="s_0_1_0_3" property="s0103" jdbcType="DOUBLE" />
+    <result column="s_0_2_0_3" property="s0203" jdbcType="DOUBLE" />
+    <result column="s_0_3_0_3" property="s0303" jdbcType="DOUBLE" />
+    <result column="s_0_0_1_3" property="s0013" jdbcType="DOUBLE" />
+    <result column="s_0_1_1_3" property="s0113" jdbcType="DOUBLE" />
+    <result column="s_0_2_1_3" property="s0213" jdbcType="DOUBLE" />
+    <result column="s_1_2_1_3" property="s1213" jdbcType="DOUBLE" />
+    <result column="s_0_3_1_3" property="s0313" jdbcType="DOUBLE" />
+    <result column="s_1_1_1_3" property="s1113" jdbcType="DOUBLE" />
+    <result column="s_1_0_1_3" property="s1013" jdbcType="DOUBLE" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, race_id, s_0_0_1_0, s_1_0_1_0, s_0_0_2_0, s_1_0_2_0, s_2_0_2_0, s_1_0_2_1, s_2_0_2_1, 
+    s_2_1_2_1, s_0_0_2_1, s_1_1_2_1, s_0_1_2_1, s_0_0_3_0, s_1_0_3_0, s_2_0_3_0, s_3_0_3_0, 
+    s_0_0_3_1, s_1_0_3_1, s_2_0_3_1, s_2_1_3_1, s_3_0_3_1, s_1_1_3_1, s_0_1_3_1, s_0_0_1_1, 
+    s_1_1_1_1, s_1_0_1_1, s_0_1_1_1, s_0_0_2_2, s_1_1_2_2, s_1_0_2_2, s_2_0_2_2, s_0_1_2_2, 
+    s_0_2_2_2, s_2_1_2_2, s_1_2_2_2, s_2_2_2_2, s_0_0_0_1, s_0_1_0_1, s_0_0_0_2, s_0_1_0_2, 
+    s_0_2_0_2, s_0_1_1_2, s_0_2_1_2, s_1_2_1_2, s_0_0_1_2, s_1_1_1_2, s_1_0_1_2, s_0_0_0_3, 
+    s_0_1_0_3, s_0_2_0_3, s_0_3_0_3, s_0_0_1_3, s_0_1_1_3, s_0_2_1_3, s_1_2_1_3, s_0_3_1_3, 
+    s_1_1_1_3, s_1_0_1_3, create_time, update_time, state, remark
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.unknow.spiderparent.entity.RaceRateScoreAndExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from race_rate_score_and
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from race_rate_score_and
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from race_rate_score_and
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.unknow.spiderparent.entity.RaceRateScoreAndExample" >
+    delete from race_rate_score_and
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.unknow.spiderparent.entity.RaceRateScoreAnd" >
+    insert into race_rate_score_and (id, race_id, s_0_0_1_0, 
+      s_1_0_1_0, s_0_0_2_0, s_1_0_2_0, s_2_0_2_0, 
+      s_1_0_2_1, s_2_0_2_1, s_2_1_2_1, s_0_0_2_1, 
+      s_1_1_2_1, s_0_1_2_1, s_0_0_3_0, s_1_0_3_0, 
+      s_2_0_3_0, s_3_0_3_0, s_0_0_3_1, s_1_0_3_1, 
+      s_2_0_3_1, s_2_1_3_1, s_3_0_3_1, s_1_1_3_1, 
+      s_0_1_3_1, s_0_0_1_1, s_1_1_1_1, s_1_0_1_1, 
+      s_0_1_1_1, s_0_0_2_2, s_1_1_2_2, s_1_0_2_2, 
+      s_2_0_2_2, s_0_1_2_2, s_0_2_2_2, s_2_1_2_2, 
+      s_1_2_2_2, s_2_2_2_2, s_0_0_0_1, s_0_1_0_1, 
+      s_0_0_0_2, s_0_1_0_2, s_0_2_0_2, s_0_1_1_2, 
+      s_0_2_1_2, s_1_2_1_2, s_0_0_1_2, s_1_1_1_2, 
+      s_1_0_1_2, s_0_0_0_3, s_0_1_0_3, s_0_2_0_3, 
+      s_0_3_0_3, s_0_0_1_3, s_0_1_1_3, s_0_2_1_3, 
+      s_1_2_1_3, s_0_3_1_3, s_1_1_1_3, s_1_0_1_3, 
+      create_time, update_time, state, 
+      remark)
+    values (#{id,jdbcType=INTEGER}, #{raceId,jdbcType=VARCHAR}, #{s0010,jdbcType=DOUBLE}, 
+      #{s1010,jdbcType=DOUBLE}, #{s0020,jdbcType=DOUBLE}, #{s1020,jdbcType=DOUBLE}, #{s2020,jdbcType=DOUBLE}, 
+      #{s1021,jdbcType=DOUBLE}, #{s2021,jdbcType=DOUBLE}, #{s2121,jdbcType=DOUBLE}, #{s0021,jdbcType=DOUBLE}, 
+      #{s1121,jdbcType=DOUBLE}, #{s0121,jdbcType=DOUBLE}, #{s0030,jdbcType=DOUBLE}, #{s1030,jdbcType=DOUBLE}, 
+      #{s2030,jdbcType=DOUBLE}, #{s3030,jdbcType=DOUBLE}, #{s0031,jdbcType=DOUBLE}, #{s1031,jdbcType=DOUBLE}, 
+      #{s2031,jdbcType=DOUBLE}, #{s2131,jdbcType=DOUBLE}, #{s3031,jdbcType=DOUBLE}, #{s1131,jdbcType=DOUBLE}, 
+      #{s0131,jdbcType=DOUBLE}, #{s0011,jdbcType=DOUBLE}, #{s1111,jdbcType=DOUBLE}, #{s1011,jdbcType=DOUBLE}, 
+      #{s0111,jdbcType=DOUBLE}, #{s0022,jdbcType=DOUBLE}, #{s1122,jdbcType=DOUBLE}, #{s1022,jdbcType=DOUBLE}, 
+      #{s2022,jdbcType=DOUBLE}, #{s0122,jdbcType=DOUBLE}, #{s0222,jdbcType=DOUBLE}, #{s2122,jdbcType=DOUBLE}, 
+      #{s1222,jdbcType=DOUBLE}, #{s2222,jdbcType=DOUBLE}, #{s0001,jdbcType=DOUBLE}, #{s0101,jdbcType=DOUBLE}, 
+      #{s0002,jdbcType=DOUBLE}, #{s0102,jdbcType=DOUBLE}, #{s0202,jdbcType=DOUBLE}, #{s0112,jdbcType=DOUBLE}, 
+      #{s0212,jdbcType=DOUBLE}, #{s1212,jdbcType=DOUBLE}, #{s0012,jdbcType=DOUBLE}, #{s1112,jdbcType=DOUBLE}, 
+      #{s1012,jdbcType=DOUBLE}, #{s0003,jdbcType=DOUBLE}, #{s0103,jdbcType=DOUBLE}, #{s0203,jdbcType=DOUBLE}, 
+      #{s0303,jdbcType=DOUBLE}, #{s0013,jdbcType=DOUBLE}, #{s0113,jdbcType=DOUBLE}, #{s0213,jdbcType=DOUBLE}, 
+      #{s1213,jdbcType=DOUBLE}, #{s0313,jdbcType=DOUBLE}, #{s1113,jdbcType=DOUBLE}, #{s1013,jdbcType=DOUBLE}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{state,jdbcType=INTEGER}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id" parameterType="com.unknow.spiderparent.entity.RaceRateScoreAnd" >
+    insert into race_rate_score_and
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="raceId != null" >
+        race_id,
+      </if>
+      <if test="s0010 != null" >
+        s_0_0_1_0,
+      </if>
+      <if test="s1010 != null" >
+        s_1_0_1_0,
+      </if>
+      <if test="s0020 != null" >
+        s_0_0_2_0,
+      </if>
+      <if test="s1020 != null" >
+        s_1_0_2_0,
+      </if>
+      <if test="s2020 != null" >
+        s_2_0_2_0,
+      </if>
+      <if test="s1021 != null" >
+        s_1_0_2_1,
+      </if>
+      <if test="s2021 != null" >
+        s_2_0_2_1,
+      </if>
+      <if test="s2121 != null" >
+        s_2_1_2_1,
+      </if>
+      <if test="s0021 != null" >
+        s_0_0_2_1,
+      </if>
+      <if test="s1121 != null" >
+        s_1_1_2_1,
+      </if>
+      <if test="s0121 != null" >
+        s_0_1_2_1,
+      </if>
+      <if test="s0030 != null" >
+        s_0_0_3_0,
+      </if>
+      <if test="s1030 != null" >
+        s_1_0_3_0,
+      </if>
+      <if test="s2030 != null" >
+        s_2_0_3_0,
+      </if>
+      <if test="s3030 != null" >
+        s_3_0_3_0,
+      </if>
+      <if test="s0031 != null" >
+        s_0_0_3_1,
+      </if>
+      <if test="s1031 != null" >
+        s_1_0_3_1,
+      </if>
+      <if test="s2031 != null" >
+        s_2_0_3_1,
+      </if>
+      <if test="s2131 != null" >
+        s_2_1_3_1,
+      </if>
+      <if test="s3031 != null" >
+        s_3_0_3_1,
+      </if>
+      <if test="s1131 != null" >
+        s_1_1_3_1,
+      </if>
+      <if test="s0131 != null" >
+        s_0_1_3_1,
+      </if>
+      <if test="s0011 != null" >
+        s_0_0_1_1,
+      </if>
+      <if test="s1111 != null" >
+        s_1_1_1_1,
+      </if>
+      <if test="s1011 != null" >
+        s_1_0_1_1,
+      </if>
+      <if test="s0111 != null" >
+        s_0_1_1_1,
+      </if>
+      <if test="s0022 != null" >
+        s_0_0_2_2,
+      </if>
+      <if test="s1122 != null" >
+        s_1_1_2_2,
+      </if>
+      <if test="s1022 != null" >
+        s_1_0_2_2,
+      </if>
+      <if test="s2022 != null" >
+        s_2_0_2_2,
+      </if>
+      <if test="s0122 != null" >
+        s_0_1_2_2,
+      </if>
+      <if test="s0222 != null" >
+        s_0_2_2_2,
+      </if>
+      <if test="s2122 != null" >
+        s_2_1_2_2,
+      </if>
+      <if test="s1222 != null" >
+        s_1_2_2_2,
+      </if>
+      <if test="s2222 != null" >
+        s_2_2_2_2,
+      </if>
+      <if test="s0001 != null" >
+        s_0_0_0_1,
+      </if>
+      <if test="s0101 != null" >
+        s_0_1_0_1,
+      </if>
+      <if test="s0002 != null" >
+        s_0_0_0_2,
+      </if>
+      <if test="s0102 != null" >
+        s_0_1_0_2,
+      </if>
+      <if test="s0202 != null" >
+        s_0_2_0_2,
+      </if>
+      <if test="s0112 != null" >
+        s_0_1_1_2,
+      </if>
+      <if test="s0212 != null" >
+        s_0_2_1_2,
+      </if>
+      <if test="s1212 != null" >
+        s_1_2_1_2,
+      </if>
+      <if test="s0012 != null" >
+        s_0_0_1_2,
+      </if>
+      <if test="s1112 != null" >
+        s_1_1_1_2,
+      </if>
+      <if test="s1012 != null" >
+        s_1_0_1_2,
+      </if>
+      <if test="s0003 != null" >
+        s_0_0_0_3,
+      </if>
+      <if test="s0103 != null" >
+        s_0_1_0_3,
+      </if>
+      <if test="s0203 != null" >
+        s_0_2_0_3,
+      </if>
+      <if test="s0303 != null" >
+        s_0_3_0_3,
+      </if>
+      <if test="s0013 != null" >
+        s_0_0_1_3,
+      </if>
+      <if test="s0113 != null" >
+        s_0_1_1_3,
+      </if>
+      <if test="s0213 != null" >
+        s_0_2_1_3,
+      </if>
+      <if test="s1213 != null" >
+        s_1_2_1_3,
+      </if>
+      <if test="s0313 != null" >
+        s_0_3_1_3,
+      </if>
+      <if test="s1113 != null" >
+        s_1_1_1_3,
+      </if>
+      <if test="s1013 != null" >
+        s_1_0_1_3,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="raceId != null" >
+        #{raceId,jdbcType=VARCHAR},
+      </if>
+      <if test="s0010 != null" >
+        #{s0010,jdbcType=DOUBLE},
+      </if>
+      <if test="s1010 != null" >
+        #{s1010,jdbcType=DOUBLE},
+      </if>
+      <if test="s0020 != null" >
+        #{s0020,jdbcType=DOUBLE},
+      </if>
+      <if test="s1020 != null" >
+        #{s1020,jdbcType=DOUBLE},
+      </if>
+      <if test="s2020 != null" >
+        #{s2020,jdbcType=DOUBLE},
+      </if>
+      <if test="s1021 != null" >
+        #{s1021,jdbcType=DOUBLE},
+      </if>
+      <if test="s2021 != null" >
+        #{s2021,jdbcType=DOUBLE},
+      </if>
+      <if test="s2121 != null" >
+        #{s2121,jdbcType=DOUBLE},
+      </if>
+      <if test="s0021 != null" >
+        #{s0021,jdbcType=DOUBLE},
+      </if>
+      <if test="s1121 != null" >
+        #{s1121,jdbcType=DOUBLE},
+      </if>
+      <if test="s0121 != null" >
+        #{s0121,jdbcType=DOUBLE},
+      </if>
+      <if test="s0030 != null" >
+        #{s0030,jdbcType=DOUBLE},
+      </if>
+      <if test="s1030 != null" >
+        #{s1030,jdbcType=DOUBLE},
+      </if>
+      <if test="s2030 != null" >
+        #{s2030,jdbcType=DOUBLE},
+      </if>
+      <if test="s3030 != null" >
+        #{s3030,jdbcType=DOUBLE},
+      </if>
+      <if test="s0031 != null" >
+        #{s0031,jdbcType=DOUBLE},
+      </if>
+      <if test="s1031 != null" >
+        #{s1031,jdbcType=DOUBLE},
+      </if>
+      <if test="s2031 != null" >
+        #{s2031,jdbcType=DOUBLE},
+      </if>
+      <if test="s2131 != null" >
+        #{s2131,jdbcType=DOUBLE},
+      </if>
+      <if test="s3031 != null" >
+        #{s3031,jdbcType=DOUBLE},
+      </if>
+      <if test="s1131 != null" >
+        #{s1131,jdbcType=DOUBLE},
+      </if>
+      <if test="s0131 != null" >
+        #{s0131,jdbcType=DOUBLE},
+      </if>
+      <if test="s0011 != null" >
+        #{s0011,jdbcType=DOUBLE},
+      </if>
+      <if test="s1111 != null" >
+        #{s1111,jdbcType=DOUBLE},
+      </if>
+      <if test="s1011 != null" >
+        #{s1011,jdbcType=DOUBLE},
+      </if>
+      <if test="s0111 != null" >
+        #{s0111,jdbcType=DOUBLE},
+      </if>
+      <if test="s0022 != null" >
+        #{s0022,jdbcType=DOUBLE},
+      </if>
+      <if test="s1122 != null" >
+        #{s1122,jdbcType=DOUBLE},
+      </if>
+      <if test="s1022 != null" >
+        #{s1022,jdbcType=DOUBLE},
+      </if>
+      <if test="s2022 != null" >
+        #{s2022,jdbcType=DOUBLE},
+      </if>
+      <if test="s0122 != null" >
+        #{s0122,jdbcType=DOUBLE},
+      </if>
+      <if test="s0222 != null" >
+        #{s0222,jdbcType=DOUBLE},
+      </if>
+      <if test="s2122 != null" >
+        #{s2122,jdbcType=DOUBLE},
+      </if>
+      <if test="s1222 != null" >
+        #{s1222,jdbcType=DOUBLE},
+      </if>
+      <if test="s2222 != null" >
+        #{s2222,jdbcType=DOUBLE},
+      </if>
+      <if test="s0001 != null" >
+        #{s0001,jdbcType=DOUBLE},
+      </if>
+      <if test="s0101 != null" >
+        #{s0101,jdbcType=DOUBLE},
+      </if>
+      <if test="s0002 != null" >
+        #{s0002,jdbcType=DOUBLE},
+      </if>
+      <if test="s0102 != null" >
+        #{s0102,jdbcType=DOUBLE},
+      </if>
+      <if test="s0202 != null" >
+        #{s0202,jdbcType=DOUBLE},
+      </if>
+      <if test="s0112 != null" >
+        #{s0112,jdbcType=DOUBLE},
+      </if>
+      <if test="s0212 != null" >
+        #{s0212,jdbcType=DOUBLE},
+      </if>
+      <if test="s1212 != null" >
+        #{s1212,jdbcType=DOUBLE},
+      </if>
+      <if test="s0012 != null" >
+        #{s0012,jdbcType=DOUBLE},
+      </if>
+      <if test="s1112 != null" >
+        #{s1112,jdbcType=DOUBLE},
+      </if>
+      <if test="s1012 != null" >
+        #{s1012,jdbcType=DOUBLE},
+      </if>
+      <if test="s0003 != null" >
+        #{s0003,jdbcType=DOUBLE},
+      </if>
+      <if test="s0103 != null" >
+        #{s0103,jdbcType=DOUBLE},
+      </if>
+      <if test="s0203 != null" >
+        #{s0203,jdbcType=DOUBLE},
+      </if>
+      <if test="s0303 != null" >
+        #{s0303,jdbcType=DOUBLE},
+      </if>
+      <if test="s0013 != null" >
+        #{s0013,jdbcType=DOUBLE},
+      </if>
+      <if test="s0113 != null" >
+        #{s0113,jdbcType=DOUBLE},
+      </if>
+      <if test="s0213 != null" >
+        #{s0213,jdbcType=DOUBLE},
+      </if>
+      <if test="s1213 != null" >
+        #{s1213,jdbcType=DOUBLE},
+      </if>
+      <if test="s0313 != null" >
+        #{s0313,jdbcType=DOUBLE},
+      </if>
+      <if test="s1113 != null" >
+        #{s1113,jdbcType=DOUBLE},
+      </if>
+      <if test="s1013 != null" >
+        #{s1013,jdbcType=DOUBLE},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.unknow.spiderparent.entity.RaceRateScoreAndExample" resultType="java.lang.Integer" >
+    select count(*) from race_rate_score_and
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update race_rate_score_and
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.raceId != null" >
+        race_id = #{record.raceId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.s0010 != null" >
+        s_0_0_1_0 = #{record.s0010,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s1010 != null" >
+        s_1_0_1_0 = #{record.s1010,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s0020 != null" >
+        s_0_0_2_0 = #{record.s0020,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s1020 != null" >
+        s_1_0_2_0 = #{record.s1020,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s2020 != null" >
+        s_2_0_2_0 = #{record.s2020,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s1021 != null" >
+        s_1_0_2_1 = #{record.s1021,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s2021 != null" >
+        s_2_0_2_1 = #{record.s2021,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s2121 != null" >
+        s_2_1_2_1 = #{record.s2121,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s0021 != null" >
+        s_0_0_2_1 = #{record.s0021,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s1121 != null" >
+        s_1_1_2_1 = #{record.s1121,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s0121 != null" >
+        s_0_1_2_1 = #{record.s0121,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s0030 != null" >
+        s_0_0_3_0 = #{record.s0030,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s1030 != null" >
+        s_1_0_3_0 = #{record.s1030,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s2030 != null" >
+        s_2_0_3_0 = #{record.s2030,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s3030 != null" >
+        s_3_0_3_0 = #{record.s3030,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s0031 != null" >
+        s_0_0_3_1 = #{record.s0031,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s1031 != null" >
+        s_1_0_3_1 = #{record.s1031,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s2031 != null" >
+        s_2_0_3_1 = #{record.s2031,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s2131 != null" >
+        s_2_1_3_1 = #{record.s2131,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s3031 != null" >
+        s_3_0_3_1 = #{record.s3031,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s1131 != null" >
+        s_1_1_3_1 = #{record.s1131,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s0131 != null" >
+        s_0_1_3_1 = #{record.s0131,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s0011 != null" >
+        s_0_0_1_1 = #{record.s0011,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s1111 != null" >
+        s_1_1_1_1 = #{record.s1111,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s1011 != null" >
+        s_1_0_1_1 = #{record.s1011,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s0111 != null" >
+        s_0_1_1_1 = #{record.s0111,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s0022 != null" >
+        s_0_0_2_2 = #{record.s0022,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s1122 != null" >
+        s_1_1_2_2 = #{record.s1122,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s1022 != null" >
+        s_1_0_2_2 = #{record.s1022,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s2022 != null" >
+        s_2_0_2_2 = #{record.s2022,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s0122 != null" >
+        s_0_1_2_2 = #{record.s0122,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s0222 != null" >
+        s_0_2_2_2 = #{record.s0222,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s2122 != null" >
+        s_2_1_2_2 = #{record.s2122,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s1222 != null" >
+        s_1_2_2_2 = #{record.s1222,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s2222 != null" >
+        s_2_2_2_2 = #{record.s2222,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s0001 != null" >
+        s_0_0_0_1 = #{record.s0001,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s0101 != null" >
+        s_0_1_0_1 = #{record.s0101,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s0002 != null" >
+        s_0_0_0_2 = #{record.s0002,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s0102 != null" >
+        s_0_1_0_2 = #{record.s0102,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s0202 != null" >
+        s_0_2_0_2 = #{record.s0202,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s0112 != null" >
+        s_0_1_1_2 = #{record.s0112,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s0212 != null" >
+        s_0_2_1_2 = #{record.s0212,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s1212 != null" >
+        s_1_2_1_2 = #{record.s1212,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s0012 != null" >
+        s_0_0_1_2 = #{record.s0012,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s1112 != null" >
+        s_1_1_1_2 = #{record.s1112,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s1012 != null" >
+        s_1_0_1_2 = #{record.s1012,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s0003 != null" >
+        s_0_0_0_3 = #{record.s0003,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s0103 != null" >
+        s_0_1_0_3 = #{record.s0103,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s0203 != null" >
+        s_0_2_0_3 = #{record.s0203,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s0303 != null" >
+        s_0_3_0_3 = #{record.s0303,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s0013 != null" >
+        s_0_0_1_3 = #{record.s0013,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s0113 != null" >
+        s_0_1_1_3 = #{record.s0113,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s0213 != null" >
+        s_0_2_1_3 = #{record.s0213,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s1213 != null" >
+        s_1_2_1_3 = #{record.s1213,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s0313 != null" >
+        s_0_3_1_3 = #{record.s0313,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s1113 != null" >
+        s_1_1_1_3 = #{record.s1113,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s1013 != null" >
+        s_1_0_1_3 = #{record.s1013,jdbcType=DOUBLE},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.state != null" >
+        state = #{record.state,jdbcType=INTEGER},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update race_rate_score_and
+    set id = #{record.id,jdbcType=INTEGER},
+      race_id = #{record.raceId,jdbcType=VARCHAR},
+      s_0_0_1_0 = #{record.s0010,jdbcType=DOUBLE},
+      s_1_0_1_0 = #{record.s1010,jdbcType=DOUBLE},
+      s_0_0_2_0 = #{record.s0020,jdbcType=DOUBLE},
+      s_1_0_2_0 = #{record.s1020,jdbcType=DOUBLE},
+      s_2_0_2_0 = #{record.s2020,jdbcType=DOUBLE},
+      s_1_0_2_1 = #{record.s1021,jdbcType=DOUBLE},
+      s_2_0_2_1 = #{record.s2021,jdbcType=DOUBLE},
+      s_2_1_2_1 = #{record.s2121,jdbcType=DOUBLE},
+      s_0_0_2_1 = #{record.s0021,jdbcType=DOUBLE},
+      s_1_1_2_1 = #{record.s1121,jdbcType=DOUBLE},
+      s_0_1_2_1 = #{record.s0121,jdbcType=DOUBLE},
+      s_0_0_3_0 = #{record.s0030,jdbcType=DOUBLE},
+      s_1_0_3_0 = #{record.s1030,jdbcType=DOUBLE},
+      s_2_0_3_0 = #{record.s2030,jdbcType=DOUBLE},
+      s_3_0_3_0 = #{record.s3030,jdbcType=DOUBLE},
+      s_0_0_3_1 = #{record.s0031,jdbcType=DOUBLE},
+      s_1_0_3_1 = #{record.s1031,jdbcType=DOUBLE},
+      s_2_0_3_1 = #{record.s2031,jdbcType=DOUBLE},
+      s_2_1_3_1 = #{record.s2131,jdbcType=DOUBLE},
+      s_3_0_3_1 = #{record.s3031,jdbcType=DOUBLE},
+      s_1_1_3_1 = #{record.s1131,jdbcType=DOUBLE},
+      s_0_1_3_1 = #{record.s0131,jdbcType=DOUBLE},
+      s_0_0_1_1 = #{record.s0011,jdbcType=DOUBLE},
+      s_1_1_1_1 = #{record.s1111,jdbcType=DOUBLE},
+      s_1_0_1_1 = #{record.s1011,jdbcType=DOUBLE},
+      s_0_1_1_1 = #{record.s0111,jdbcType=DOUBLE},
+      s_0_0_2_2 = #{record.s0022,jdbcType=DOUBLE},
+      s_1_1_2_2 = #{record.s1122,jdbcType=DOUBLE},
+      s_1_0_2_2 = #{record.s1022,jdbcType=DOUBLE},
+      s_2_0_2_2 = #{record.s2022,jdbcType=DOUBLE},
+      s_0_1_2_2 = #{record.s0122,jdbcType=DOUBLE},
+      s_0_2_2_2 = #{record.s0222,jdbcType=DOUBLE},
+      s_2_1_2_2 = #{record.s2122,jdbcType=DOUBLE},
+      s_1_2_2_2 = #{record.s1222,jdbcType=DOUBLE},
+      s_2_2_2_2 = #{record.s2222,jdbcType=DOUBLE},
+      s_0_0_0_1 = #{record.s0001,jdbcType=DOUBLE},
+      s_0_1_0_1 = #{record.s0101,jdbcType=DOUBLE},
+      s_0_0_0_2 = #{record.s0002,jdbcType=DOUBLE},
+      s_0_1_0_2 = #{record.s0102,jdbcType=DOUBLE},
+      s_0_2_0_2 = #{record.s0202,jdbcType=DOUBLE},
+      s_0_1_1_2 = #{record.s0112,jdbcType=DOUBLE},
+      s_0_2_1_2 = #{record.s0212,jdbcType=DOUBLE},
+      s_1_2_1_2 = #{record.s1212,jdbcType=DOUBLE},
+      s_0_0_1_2 = #{record.s0012,jdbcType=DOUBLE},
+      s_1_1_1_2 = #{record.s1112,jdbcType=DOUBLE},
+      s_1_0_1_2 = #{record.s1012,jdbcType=DOUBLE},
+      s_0_0_0_3 = #{record.s0003,jdbcType=DOUBLE},
+      s_0_1_0_3 = #{record.s0103,jdbcType=DOUBLE},
+      s_0_2_0_3 = #{record.s0203,jdbcType=DOUBLE},
+      s_0_3_0_3 = #{record.s0303,jdbcType=DOUBLE},
+      s_0_0_1_3 = #{record.s0013,jdbcType=DOUBLE},
+      s_0_1_1_3 = #{record.s0113,jdbcType=DOUBLE},
+      s_0_2_1_3 = #{record.s0213,jdbcType=DOUBLE},
+      s_1_2_1_3 = #{record.s1213,jdbcType=DOUBLE},
+      s_0_3_1_3 = #{record.s0313,jdbcType=DOUBLE},
+      s_1_1_1_3 = #{record.s1113,jdbcType=DOUBLE},
+      s_1_0_1_3 = #{record.s1013,jdbcType=DOUBLE},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      state = #{record.state,jdbcType=INTEGER},
+      remark = #{record.remark,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.unknow.spiderparent.entity.RaceRateScoreAnd" >
+    update race_rate_score_and
+    <set >
+      <if test="raceId != null" >
+        race_id = #{raceId,jdbcType=VARCHAR},
+      </if>
+      <if test="s0010 != null" >
+        s_0_0_1_0 = #{s0010,jdbcType=DOUBLE},
+      </if>
+      <if test="s1010 != null" >
+        s_1_0_1_0 = #{s1010,jdbcType=DOUBLE},
+      </if>
+      <if test="s0020 != null" >
+        s_0_0_2_0 = #{s0020,jdbcType=DOUBLE},
+      </if>
+      <if test="s1020 != null" >
+        s_1_0_2_0 = #{s1020,jdbcType=DOUBLE},
+      </if>
+      <if test="s2020 != null" >
+        s_2_0_2_0 = #{s2020,jdbcType=DOUBLE},
+      </if>
+      <if test="s1021 != null" >
+        s_1_0_2_1 = #{s1021,jdbcType=DOUBLE},
+      </if>
+      <if test="s2021 != null" >
+        s_2_0_2_1 = #{s2021,jdbcType=DOUBLE},
+      </if>
+      <if test="s2121 != null" >
+        s_2_1_2_1 = #{s2121,jdbcType=DOUBLE},
+      </if>
+      <if test="s0021 != null" >
+        s_0_0_2_1 = #{s0021,jdbcType=DOUBLE},
+      </if>
+      <if test="s1121 != null" >
+        s_1_1_2_1 = #{s1121,jdbcType=DOUBLE},
+      </if>
+      <if test="s0121 != null" >
+        s_0_1_2_1 = #{s0121,jdbcType=DOUBLE},
+      </if>
+      <if test="s0030 != null" >
+        s_0_0_3_0 = #{s0030,jdbcType=DOUBLE},
+      </if>
+      <if test="s1030 != null" >
+        s_1_0_3_0 = #{s1030,jdbcType=DOUBLE},
+      </if>
+      <if test="s2030 != null" >
+        s_2_0_3_0 = #{s2030,jdbcType=DOUBLE},
+      </if>
+      <if test="s3030 != null" >
+        s_3_0_3_0 = #{s3030,jdbcType=DOUBLE},
+      </if>
+      <if test="s0031 != null" >
+        s_0_0_3_1 = #{s0031,jdbcType=DOUBLE},
+      </if>
+      <if test="s1031 != null" >
+        s_1_0_3_1 = #{s1031,jdbcType=DOUBLE},
+      </if>
+      <if test="s2031 != null" >
+        s_2_0_3_1 = #{s2031,jdbcType=DOUBLE},
+      </if>
+      <if test="s2131 != null" >
+        s_2_1_3_1 = #{s2131,jdbcType=DOUBLE},
+      </if>
+      <if test="s3031 != null" >
+        s_3_0_3_1 = #{s3031,jdbcType=DOUBLE},
+      </if>
+      <if test="s1131 != null" >
+        s_1_1_3_1 = #{s1131,jdbcType=DOUBLE},
+      </if>
+      <if test="s0131 != null" >
+        s_0_1_3_1 = #{s0131,jdbcType=DOUBLE},
+      </if>
+      <if test="s0011 != null" >
+        s_0_0_1_1 = #{s0011,jdbcType=DOUBLE},
+      </if>
+      <if test="s1111 != null" >
+        s_1_1_1_1 = #{s1111,jdbcType=DOUBLE},
+      </if>
+      <if test="s1011 != null" >
+        s_1_0_1_1 = #{s1011,jdbcType=DOUBLE},
+      </if>
+      <if test="s0111 != null" >
+        s_0_1_1_1 = #{s0111,jdbcType=DOUBLE},
+      </if>
+      <if test="s0022 != null" >
+        s_0_0_2_2 = #{s0022,jdbcType=DOUBLE},
+      </if>
+      <if test="s1122 != null" >
+        s_1_1_2_2 = #{s1122,jdbcType=DOUBLE},
+      </if>
+      <if test="s1022 != null" >
+        s_1_0_2_2 = #{s1022,jdbcType=DOUBLE},
+      </if>
+      <if test="s2022 != null" >
+        s_2_0_2_2 = #{s2022,jdbcType=DOUBLE},
+      </if>
+      <if test="s0122 != null" >
+        s_0_1_2_2 = #{s0122,jdbcType=DOUBLE},
+      </if>
+      <if test="s0222 != null" >
+        s_0_2_2_2 = #{s0222,jdbcType=DOUBLE},
+      </if>
+      <if test="s2122 != null" >
+        s_2_1_2_2 = #{s2122,jdbcType=DOUBLE},
+      </if>
+      <if test="s1222 != null" >
+        s_1_2_2_2 = #{s1222,jdbcType=DOUBLE},
+      </if>
+      <if test="s2222 != null" >
+        s_2_2_2_2 = #{s2222,jdbcType=DOUBLE},
+      </if>
+      <if test="s0001 != null" >
+        s_0_0_0_1 = #{s0001,jdbcType=DOUBLE},
+      </if>
+      <if test="s0101 != null" >
+        s_0_1_0_1 = #{s0101,jdbcType=DOUBLE},
+      </if>
+      <if test="s0002 != null" >
+        s_0_0_0_2 = #{s0002,jdbcType=DOUBLE},
+      </if>
+      <if test="s0102 != null" >
+        s_0_1_0_2 = #{s0102,jdbcType=DOUBLE},
+      </if>
+      <if test="s0202 != null" >
+        s_0_2_0_2 = #{s0202,jdbcType=DOUBLE},
+      </if>
+      <if test="s0112 != null" >
+        s_0_1_1_2 = #{s0112,jdbcType=DOUBLE},
+      </if>
+      <if test="s0212 != null" >
+        s_0_2_1_2 = #{s0212,jdbcType=DOUBLE},
+      </if>
+      <if test="s1212 != null" >
+        s_1_2_1_2 = #{s1212,jdbcType=DOUBLE},
+      </if>
+      <if test="s0012 != null" >
+        s_0_0_1_2 = #{s0012,jdbcType=DOUBLE},
+      </if>
+      <if test="s1112 != null" >
+        s_1_1_1_2 = #{s1112,jdbcType=DOUBLE},
+      </if>
+      <if test="s1012 != null" >
+        s_1_0_1_2 = #{s1012,jdbcType=DOUBLE},
+      </if>
+      <if test="s0003 != null" >
+        s_0_0_0_3 = #{s0003,jdbcType=DOUBLE},
+      </if>
+      <if test="s0103 != null" >
+        s_0_1_0_3 = #{s0103,jdbcType=DOUBLE},
+      </if>
+      <if test="s0203 != null" >
+        s_0_2_0_3 = #{s0203,jdbcType=DOUBLE},
+      </if>
+      <if test="s0303 != null" >
+        s_0_3_0_3 = #{s0303,jdbcType=DOUBLE},
+      </if>
+      <if test="s0013 != null" >
+        s_0_0_1_3 = #{s0013,jdbcType=DOUBLE},
+      </if>
+      <if test="s0113 != null" >
+        s_0_1_1_3 = #{s0113,jdbcType=DOUBLE},
+      </if>
+      <if test="s0213 != null" >
+        s_0_2_1_3 = #{s0213,jdbcType=DOUBLE},
+      </if>
+      <if test="s1213 != null" >
+        s_1_2_1_3 = #{s1213,jdbcType=DOUBLE},
+      </if>
+      <if test="s0313 != null" >
+        s_0_3_1_3 = #{s0313,jdbcType=DOUBLE},
+      </if>
+      <if test="s1113 != null" >
+        s_1_1_1_3 = #{s1113,jdbcType=DOUBLE},
+      </if>
+      <if test="s1013 != null" >
+        s_1_0_1_3 = #{s1013,jdbcType=DOUBLE},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.unknow.spiderparent.entity.RaceRateScoreAnd" >
+    update race_rate_score_and
+    set race_id = #{raceId,jdbcType=VARCHAR},
+      s_0_0_1_0 = #{s0010,jdbcType=DOUBLE},
+      s_1_0_1_0 = #{s1010,jdbcType=DOUBLE},
+      s_0_0_2_0 = #{s0020,jdbcType=DOUBLE},
+      s_1_0_2_0 = #{s1020,jdbcType=DOUBLE},
+      s_2_0_2_0 = #{s2020,jdbcType=DOUBLE},
+      s_1_0_2_1 = #{s1021,jdbcType=DOUBLE},
+      s_2_0_2_1 = #{s2021,jdbcType=DOUBLE},
+      s_2_1_2_1 = #{s2121,jdbcType=DOUBLE},
+      s_0_0_2_1 = #{s0021,jdbcType=DOUBLE},
+      s_1_1_2_1 = #{s1121,jdbcType=DOUBLE},
+      s_0_1_2_1 = #{s0121,jdbcType=DOUBLE},
+      s_0_0_3_0 = #{s0030,jdbcType=DOUBLE},
+      s_1_0_3_0 = #{s1030,jdbcType=DOUBLE},
+      s_2_0_3_0 = #{s2030,jdbcType=DOUBLE},
+      s_3_0_3_0 = #{s3030,jdbcType=DOUBLE},
+      s_0_0_3_1 = #{s0031,jdbcType=DOUBLE},
+      s_1_0_3_1 = #{s1031,jdbcType=DOUBLE},
+      s_2_0_3_1 = #{s2031,jdbcType=DOUBLE},
+      s_2_1_3_1 = #{s2131,jdbcType=DOUBLE},
+      s_3_0_3_1 = #{s3031,jdbcType=DOUBLE},
+      s_1_1_3_1 = #{s1131,jdbcType=DOUBLE},
+      s_0_1_3_1 = #{s0131,jdbcType=DOUBLE},
+      s_0_0_1_1 = #{s0011,jdbcType=DOUBLE},
+      s_1_1_1_1 = #{s1111,jdbcType=DOUBLE},
+      s_1_0_1_1 = #{s1011,jdbcType=DOUBLE},
+      s_0_1_1_1 = #{s0111,jdbcType=DOUBLE},
+      s_0_0_2_2 = #{s0022,jdbcType=DOUBLE},
+      s_1_1_2_2 = #{s1122,jdbcType=DOUBLE},
+      s_1_0_2_2 = #{s1022,jdbcType=DOUBLE},
+      s_2_0_2_2 = #{s2022,jdbcType=DOUBLE},
+      s_0_1_2_2 = #{s0122,jdbcType=DOUBLE},
+      s_0_2_2_2 = #{s0222,jdbcType=DOUBLE},
+      s_2_1_2_2 = #{s2122,jdbcType=DOUBLE},
+      s_1_2_2_2 = #{s1222,jdbcType=DOUBLE},
+      s_2_2_2_2 = #{s2222,jdbcType=DOUBLE},
+      s_0_0_0_1 = #{s0001,jdbcType=DOUBLE},
+      s_0_1_0_1 = #{s0101,jdbcType=DOUBLE},
+      s_0_0_0_2 = #{s0002,jdbcType=DOUBLE},
+      s_0_1_0_2 = #{s0102,jdbcType=DOUBLE},
+      s_0_2_0_2 = #{s0202,jdbcType=DOUBLE},
+      s_0_1_1_2 = #{s0112,jdbcType=DOUBLE},
+      s_0_2_1_2 = #{s0212,jdbcType=DOUBLE},
+      s_1_2_1_2 = #{s1212,jdbcType=DOUBLE},
+      s_0_0_1_2 = #{s0012,jdbcType=DOUBLE},
+      s_1_1_1_2 = #{s1112,jdbcType=DOUBLE},
+      s_1_0_1_2 = #{s1012,jdbcType=DOUBLE},
+      s_0_0_0_3 = #{s0003,jdbcType=DOUBLE},
+      s_0_1_0_3 = #{s0103,jdbcType=DOUBLE},
+      s_0_2_0_3 = #{s0203,jdbcType=DOUBLE},
+      s_0_3_0_3 = #{s0303,jdbcType=DOUBLE},
+      s_0_0_1_3 = #{s0013,jdbcType=DOUBLE},
+      s_0_1_1_3 = #{s0113,jdbcType=DOUBLE},
+      s_0_2_1_3 = #{s0213,jdbcType=DOUBLE},
+      s_1_2_1_3 = #{s1213,jdbcType=DOUBLE},
+      s_0_3_1_3 = #{s0313,jdbcType=DOUBLE},
+      s_1_1_1_3 = #{s1113,jdbcType=DOUBLE},
+      s_1_0_1_3 = #{s1013,jdbcType=DOUBLE},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

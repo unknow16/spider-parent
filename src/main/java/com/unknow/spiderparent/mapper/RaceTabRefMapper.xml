@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.unknow.spiderparent.mapper.RaceTabRefMapper" >
+  <resultMap id="BaseResultMap" type="com.unknow.spiderparent.entity.RaceTabRef" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="race_id" property="raceId" jdbcType="VARCHAR" />
+    <result column="main_pan" property="mainPan" jdbcType="VARCHAR" />
+    <result column="up_down_section" property="upDownSection" jdbcType="VARCHAR" />
+    <result column="enter_ball" property="enterBall" jdbcType="VARCHAR" />
+    <result column="asia_pan" property="asiaPan" jdbcType="VARCHAR" />
+    <result column="chosen" property="chosen" jdbcType="VARCHAR" />
+    <result column="minute" property="minute" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, race_id, main_pan, up_down_section, enter_ball, asia_pan, chosen, minute
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.unknow.spiderparent.entity.RaceTabRefExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from race_tab_ref
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from race_tab_ref
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from race_tab_ref
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.unknow.spiderparent.entity.RaceTabRefExample" >
+    delete from race_tab_ref
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.unknow.spiderparent.entity.RaceTabRef" >
+    insert into race_tab_ref (id, race_id, main_pan, 
+      up_down_section, enter_ball, asia_pan, 
+      chosen, minute)
+    values (#{id,jdbcType=INTEGER}, #{raceId,jdbcType=VARCHAR}, #{mainPan,jdbcType=VARCHAR}, 
+      #{upDownSection,jdbcType=VARCHAR}, #{enterBall,jdbcType=VARCHAR}, #{asiaPan,jdbcType=VARCHAR}, 
+      #{chosen,jdbcType=VARCHAR}, #{minute,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id" parameterType="com.unknow.spiderparent.entity.RaceTabRef" >
+    insert into race_tab_ref
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="raceId != null" >
+        race_id,
+      </if>
+      <if test="mainPan != null" >
+        main_pan,
+      </if>
+      <if test="upDownSection != null" >
+        up_down_section,
+      </if>
+      <if test="enterBall != null" >
+        enter_ball,
+      </if>
+      <if test="asiaPan != null" >
+        asia_pan,
+      </if>
+      <if test="chosen != null" >
+        chosen,
+      </if>
+      <if test="minute != null" >
+        minute,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="raceId != null" >
+        #{raceId,jdbcType=VARCHAR},
+      </if>
+      <if test="mainPan != null" >
+        #{mainPan,jdbcType=VARCHAR},
+      </if>
+      <if test="upDownSection != null" >
+        #{upDownSection,jdbcType=VARCHAR},
+      </if>
+      <if test="enterBall != null" >
+        #{enterBall,jdbcType=VARCHAR},
+      </if>
+      <if test="asiaPan != null" >
+        #{asiaPan,jdbcType=VARCHAR},
+      </if>
+      <if test="chosen != null" >
+        #{chosen,jdbcType=VARCHAR},
+      </if>
+      <if test="minute != null" >
+        #{minute,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.unknow.spiderparent.entity.RaceTabRefExample" resultType="java.lang.Integer" >
+    select count(*) from race_tab_ref
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update race_tab_ref
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.raceId != null" >
+        race_id = #{record.raceId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mainPan != null" >
+        main_pan = #{record.mainPan,jdbcType=VARCHAR},
+      </if>
+      <if test="record.upDownSection != null" >
+        up_down_section = #{record.upDownSection,jdbcType=VARCHAR},
+      </if>
+      <if test="record.enterBall != null" >
+        enter_ball = #{record.enterBall,jdbcType=VARCHAR},
+      </if>
+      <if test="record.asiaPan != null" >
+        asia_pan = #{record.asiaPan,jdbcType=VARCHAR},
+      </if>
+      <if test="record.chosen != null" >
+        chosen = #{record.chosen,jdbcType=VARCHAR},
+      </if>
+      <if test="record.minute != null" >
+        minute = #{record.minute,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update race_tab_ref
+    set id = #{record.id,jdbcType=INTEGER},
+      race_id = #{record.raceId,jdbcType=VARCHAR},
+      main_pan = #{record.mainPan,jdbcType=VARCHAR},
+      up_down_section = #{record.upDownSection,jdbcType=VARCHAR},
+      enter_ball = #{record.enterBall,jdbcType=VARCHAR},
+      asia_pan = #{record.asiaPan,jdbcType=VARCHAR},
+      chosen = #{record.chosen,jdbcType=VARCHAR},
+      minute = #{record.minute,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.unknow.spiderparent.entity.RaceTabRef" >
+    update race_tab_ref
+    <set >
+      <if test="raceId != null" >
+        race_id = #{raceId,jdbcType=VARCHAR},
+      </if>
+      <if test="mainPan != null" >
+        main_pan = #{mainPan,jdbcType=VARCHAR},
+      </if>
+      <if test="upDownSection != null" >
+        up_down_section = #{upDownSection,jdbcType=VARCHAR},
+      </if>
+      <if test="enterBall != null" >
+        enter_ball = #{enterBall,jdbcType=VARCHAR},
+      </if>
+      <if test="asiaPan != null" >
+        asia_pan = #{asiaPan,jdbcType=VARCHAR},
+      </if>
+      <if test="chosen != null" >
+        chosen = #{chosen,jdbcType=VARCHAR},
+      </if>
+      <if test="minute != null" >
+        minute = #{minute,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.unknow.spiderparent.entity.RaceTabRef" >
+    update race_tab_ref
+    set race_id = #{raceId,jdbcType=VARCHAR},
+      main_pan = #{mainPan,jdbcType=VARCHAR},
+      up_down_section = #{upDownSection,jdbcType=VARCHAR},
+      enter_ball = #{enterBall,jdbcType=VARCHAR},
+      asia_pan = #{asiaPan,jdbcType=VARCHAR},
+      chosen = #{chosen,jdbcType=VARCHAR},
+      minute = #{minute,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

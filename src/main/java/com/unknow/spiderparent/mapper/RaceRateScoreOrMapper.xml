@@ -1,0 +1,819 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.unknow.spiderparent.mapper.RaceRateScoreOrMapper" >
+  <resultMap id="BaseResultMap" type="com.unknow.spiderparent.entity.RaceRateScoreOr" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="race_id" property="raceId" jdbcType="VARCHAR" />
+    <result column="s_1_0" property="s10" jdbcType="DOUBLE" />
+    <result column="s_2_0" property="s20" jdbcType="DOUBLE" />
+    <result column="s_2_1" property="s21" jdbcType="DOUBLE" />
+    <result column="s_3_0" property="s30" jdbcType="DOUBLE" />
+    <result column="s_3_1" property="s31" jdbcType="DOUBLE" />
+    <result column="s_3_2" property="s32" jdbcType="DOUBLE" />
+    <result column="s_4_0" property="s40" jdbcType="DOUBLE" />
+    <result column="s_4_1" property="s41" jdbcType="DOUBLE" />
+    <result column="s_4_2" property="s42" jdbcType="DOUBLE" />
+    <result column="s_4_3" property="s43" jdbcType="DOUBLE" />
+    <result column="s_5_0" property="s50" jdbcType="DOUBLE" />
+    <result column="s_5_1" property="s51" jdbcType="DOUBLE" />
+    <result column="s_5_2" property="s52" jdbcType="DOUBLE" />
+    <result column="s_5_3" property="s53" jdbcType="DOUBLE" />
+    <result column="s_5_4" property="s54" jdbcType="DOUBLE" />
+    <result column="s_6_0" property="s60" jdbcType="DOUBLE" />
+    <result column="s_6_1" property="s61" jdbcType="DOUBLE" />
+    <result column="s_6_2" property="s62" jdbcType="DOUBLE" />
+    <result column="s_6_3" property="s63" jdbcType="DOUBLE" />
+    <result column="s_6_4" property="s64" jdbcType="DOUBLE" />
+    <result column="s_6_5" property="s65" jdbcType="DOUBLE" />
+    <result column="s_7_0" property="s70" jdbcType="DOUBLE" />
+    <result column="s_7_1" property="s71" jdbcType="DOUBLE" />
+    <result column="s_7_2" property="s72" jdbcType="DOUBLE" />
+    <result column="s_7_3" property="s73" jdbcType="DOUBLE" />
+    <result column="s_7_4" property="s74" jdbcType="DOUBLE" />
+    <result column="s_7_5" property="s75" jdbcType="DOUBLE" />
+    <result column="s_7_6" property="s76" jdbcType="DOUBLE" />
+    <result column="s_0_0" property="s00" jdbcType="DOUBLE" />
+    <result column="s_1_1" property="s11" jdbcType="DOUBLE" />
+    <result column="s_2_2" property="s22" jdbcType="DOUBLE" />
+    <result column="s_3_3" property="s33" jdbcType="DOUBLE" />
+    <result column="s_4_4" property="s44" jdbcType="DOUBLE" />
+    <result column="s_5_5" property="s55" jdbcType="DOUBLE" />
+    <result column="s_6_6" property="s66" jdbcType="DOUBLE" />
+    <result column="s_7_7" property="s77" jdbcType="DOUBLE" />
+    <result column="session_type" property="sessionType" jdbcType="INTEGER" />
+    <result column="host_type" property="hostType" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, race_id, s_1_0, s_2_0, s_2_1, s_3_0, s_3_1, s_3_2, s_4_0, s_4_1, s_4_2, s_4_3, 
+    s_5_0, s_5_1, s_5_2, s_5_3, s_5_4, s_6_0, s_6_1, s_6_2, s_6_3, s_6_4, s_6_5, s_7_0, 
+    s_7_1, s_7_2, s_7_3, s_7_4, s_7_5, s_7_6, s_0_0, s_1_1, s_2_2, s_3_3, s_4_4, s_5_5, 
+    s_6_6, s_7_7, session_type, host_type, create_time, update_time, state, remark
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.unknow.spiderparent.entity.RaceRateScoreOrExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from race_rate_score_or
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from race_rate_score_or
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from race_rate_score_or
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.unknow.spiderparent.entity.RaceRateScoreOrExample" >
+    delete from race_rate_score_or
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.unknow.spiderparent.entity.RaceRateScoreOr" >
+    insert into race_rate_score_or (id, race_id, s_1_0, 
+      s_2_0, s_2_1, s_3_0, s_3_1, 
+      s_3_2, s_4_0, s_4_1, s_4_2, 
+      s_4_3, s_5_0, s_5_1, s_5_2, 
+      s_5_3, s_5_4, s_6_0, s_6_1, 
+      s_6_2, s_6_3, s_6_4, s_6_5, 
+      s_7_0, s_7_1, s_7_2, s_7_3, 
+      s_7_4, s_7_5, s_7_6, s_0_0, 
+      s_1_1, s_2_2, s_3_3, s_4_4, 
+      s_5_5, s_6_6, s_7_7, session_type, 
+      host_type, create_time, update_time, 
+      state, remark)
+    values (#{id,jdbcType=INTEGER}, #{raceId,jdbcType=VARCHAR}, #{s10,jdbcType=DOUBLE}, 
+      #{s20,jdbcType=DOUBLE}, #{s21,jdbcType=DOUBLE}, #{s30,jdbcType=DOUBLE}, #{s31,jdbcType=DOUBLE}, 
+      #{s32,jdbcType=DOUBLE}, #{s40,jdbcType=DOUBLE}, #{s41,jdbcType=DOUBLE}, #{s42,jdbcType=DOUBLE}, 
+      #{s43,jdbcType=DOUBLE}, #{s50,jdbcType=DOUBLE}, #{s51,jdbcType=DOUBLE}, #{s52,jdbcType=DOUBLE}, 
+      #{s53,jdbcType=DOUBLE}, #{s54,jdbcType=DOUBLE}, #{s60,jdbcType=DOUBLE}, #{s61,jdbcType=DOUBLE}, 
+      #{s62,jdbcType=DOUBLE}, #{s63,jdbcType=DOUBLE}, #{s64,jdbcType=DOUBLE}, #{s65,jdbcType=DOUBLE}, 
+      #{s70,jdbcType=DOUBLE}, #{s71,jdbcType=DOUBLE}, #{s72,jdbcType=DOUBLE}, #{s73,jdbcType=DOUBLE}, 
+      #{s74,jdbcType=DOUBLE}, #{s75,jdbcType=DOUBLE}, #{s76,jdbcType=DOUBLE}, #{s00,jdbcType=DOUBLE}, 
+      #{s11,jdbcType=DOUBLE}, #{s22,jdbcType=DOUBLE}, #{s33,jdbcType=DOUBLE}, #{s44,jdbcType=DOUBLE}, 
+      #{s55,jdbcType=DOUBLE}, #{s66,jdbcType=DOUBLE}, #{s77,jdbcType=DOUBLE}, #{sessionType,jdbcType=INTEGER}, 
+      #{hostType,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{state,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id" parameterType="com.unknow.spiderparent.entity.RaceRateScoreOr" >
+    insert into race_rate_score_or
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="raceId != null" >
+        race_id,
+      </if>
+      <if test="s10 != null" >
+        s_1_0,
+      </if>
+      <if test="s20 != null" >
+        s_2_0,
+      </if>
+      <if test="s21 != null" >
+        s_2_1,
+      </if>
+      <if test="s30 != null" >
+        s_3_0,
+      </if>
+      <if test="s31 != null" >
+        s_3_1,
+      </if>
+      <if test="s32 != null" >
+        s_3_2,
+      </if>
+      <if test="s40 != null" >
+        s_4_0,
+      </if>
+      <if test="s41 != null" >
+        s_4_1,
+      </if>
+      <if test="s42 != null" >
+        s_4_2,
+      </if>
+      <if test="s43 != null" >
+        s_4_3,
+      </if>
+      <if test="s50 != null" >
+        s_5_0,
+      </if>
+      <if test="s51 != null" >
+        s_5_1,
+      </if>
+      <if test="s52 != null" >
+        s_5_2,
+      </if>
+      <if test="s53 != null" >
+        s_5_3,
+      </if>
+      <if test="s54 != null" >
+        s_5_4,
+      </if>
+      <if test="s60 != null" >
+        s_6_0,
+      </if>
+      <if test="s61 != null" >
+        s_6_1,
+      </if>
+      <if test="s62 != null" >
+        s_6_2,
+      </if>
+      <if test="s63 != null" >
+        s_6_3,
+      </if>
+      <if test="s64 != null" >
+        s_6_4,
+      </if>
+      <if test="s65 != null" >
+        s_6_5,
+      </if>
+      <if test="s70 != null" >
+        s_7_0,
+      </if>
+      <if test="s71 != null" >
+        s_7_1,
+      </if>
+      <if test="s72 != null" >
+        s_7_2,
+      </if>
+      <if test="s73 != null" >
+        s_7_3,
+      </if>
+      <if test="s74 != null" >
+        s_7_4,
+      </if>
+      <if test="s75 != null" >
+        s_7_5,
+      </if>
+      <if test="s76 != null" >
+        s_7_6,
+      </if>
+      <if test="s00 != null" >
+        s_0_0,
+      </if>
+      <if test="s11 != null" >
+        s_1_1,
+      </if>
+      <if test="s22 != null" >
+        s_2_2,
+      </if>
+      <if test="s33 != null" >
+        s_3_3,
+      </if>
+      <if test="s44 != null" >
+        s_4_4,
+      </if>
+      <if test="s55 != null" >
+        s_5_5,
+      </if>
+      <if test="s66 != null" >
+        s_6_6,
+      </if>
+      <if test="s77 != null" >
+        s_7_7,
+      </if>
+      <if test="sessionType != null" >
+        session_type,
+      </if>
+      <if test="hostType != null" >
+        host_type,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="raceId != null" >
+        #{raceId,jdbcType=VARCHAR},
+      </if>
+      <if test="s10 != null" >
+        #{s10,jdbcType=DOUBLE},
+      </if>
+      <if test="s20 != null" >
+        #{s20,jdbcType=DOUBLE},
+      </if>
+      <if test="s21 != null" >
+        #{s21,jdbcType=DOUBLE},
+      </if>
+      <if test="s30 != null" >
+        #{s30,jdbcType=DOUBLE},
+      </if>
+      <if test="s31 != null" >
+        #{s31,jdbcType=DOUBLE},
+      </if>
+      <if test="s32 != null" >
+        #{s32,jdbcType=DOUBLE},
+      </if>
+      <if test="s40 != null" >
+        #{s40,jdbcType=DOUBLE},
+      </if>
+      <if test="s41 != null" >
+        #{s41,jdbcType=DOUBLE},
+      </if>
+      <if test="s42 != null" >
+        #{s42,jdbcType=DOUBLE},
+      </if>
+      <if test="s43 != null" >
+        #{s43,jdbcType=DOUBLE},
+      </if>
+      <if test="s50 != null" >
+        #{s50,jdbcType=DOUBLE},
+      </if>
+      <if test="s51 != null" >
+        #{s51,jdbcType=DOUBLE},
+      </if>
+      <if test="s52 != null" >
+        #{s52,jdbcType=DOUBLE},
+      </if>
+      <if test="s53 != null" >
+        #{s53,jdbcType=DOUBLE},
+      </if>
+      <if test="s54 != null" >
+        #{s54,jdbcType=DOUBLE},
+      </if>
+      <if test="s60 != null" >
+        #{s60,jdbcType=DOUBLE},
+      </if>
+      <if test="s61 != null" >
+        #{s61,jdbcType=DOUBLE},
+      </if>
+      <if test="s62 != null" >
+        #{s62,jdbcType=DOUBLE},
+      </if>
+      <if test="s63 != null" >
+        #{s63,jdbcType=DOUBLE},
+      </if>
+      <if test="s64 != null" >
+        #{s64,jdbcType=DOUBLE},
+      </if>
+      <if test="s65 != null" >
+        #{s65,jdbcType=DOUBLE},
+      </if>
+      <if test="s70 != null" >
+        #{s70,jdbcType=DOUBLE},
+      </if>
+      <if test="s71 != null" >
+        #{s71,jdbcType=DOUBLE},
+      </if>
+      <if test="s72 != null" >
+        #{s72,jdbcType=DOUBLE},
+      </if>
+      <if test="s73 != null" >
+        #{s73,jdbcType=DOUBLE},
+      </if>
+      <if test="s74 != null" >
+        #{s74,jdbcType=DOUBLE},
+      </if>
+      <if test="s75 != null" >
+        #{s75,jdbcType=DOUBLE},
+      </if>
+      <if test="s76 != null" >
+        #{s76,jdbcType=DOUBLE},
+      </if>
+      <if test="s00 != null" >
+        #{s00,jdbcType=DOUBLE},
+      </if>
+      <if test="s11 != null" >
+        #{s11,jdbcType=DOUBLE},
+      </if>
+      <if test="s22 != null" >
+        #{s22,jdbcType=DOUBLE},
+      </if>
+      <if test="s33 != null" >
+        #{s33,jdbcType=DOUBLE},
+      </if>
+      <if test="s44 != null" >
+        #{s44,jdbcType=DOUBLE},
+      </if>
+      <if test="s55 != null" >
+        #{s55,jdbcType=DOUBLE},
+      </if>
+      <if test="s66 != null" >
+        #{s66,jdbcType=DOUBLE},
+      </if>
+      <if test="s77 != null" >
+        #{s77,jdbcType=DOUBLE},
+      </if>
+      <if test="sessionType != null" >
+        #{sessionType,jdbcType=INTEGER},
+      </if>
+      <if test="hostType != null" >
+        #{hostType,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.unknow.spiderparent.entity.RaceRateScoreOrExample" resultType="java.lang.Integer" >
+    select count(*) from race_rate_score_or
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update race_rate_score_or
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.raceId != null" >
+        race_id = #{record.raceId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.s10 != null" >
+        s_1_0 = #{record.s10,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s20 != null" >
+        s_2_0 = #{record.s20,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s21 != null" >
+        s_2_1 = #{record.s21,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s30 != null" >
+        s_3_0 = #{record.s30,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s31 != null" >
+        s_3_1 = #{record.s31,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s32 != null" >
+        s_3_2 = #{record.s32,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s40 != null" >
+        s_4_0 = #{record.s40,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s41 != null" >
+        s_4_1 = #{record.s41,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s42 != null" >
+        s_4_2 = #{record.s42,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s43 != null" >
+        s_4_3 = #{record.s43,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s50 != null" >
+        s_5_0 = #{record.s50,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s51 != null" >
+        s_5_1 = #{record.s51,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s52 != null" >
+        s_5_2 = #{record.s52,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s53 != null" >
+        s_5_3 = #{record.s53,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s54 != null" >
+        s_5_4 = #{record.s54,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s60 != null" >
+        s_6_0 = #{record.s60,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s61 != null" >
+        s_6_1 = #{record.s61,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s62 != null" >
+        s_6_2 = #{record.s62,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s63 != null" >
+        s_6_3 = #{record.s63,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s64 != null" >
+        s_6_4 = #{record.s64,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s65 != null" >
+        s_6_5 = #{record.s65,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s70 != null" >
+        s_7_0 = #{record.s70,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s71 != null" >
+        s_7_1 = #{record.s71,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s72 != null" >
+        s_7_2 = #{record.s72,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s73 != null" >
+        s_7_3 = #{record.s73,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s74 != null" >
+        s_7_4 = #{record.s74,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s75 != null" >
+        s_7_5 = #{record.s75,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s76 != null" >
+        s_7_6 = #{record.s76,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s00 != null" >
+        s_0_0 = #{record.s00,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s11 != null" >
+        s_1_1 = #{record.s11,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s22 != null" >
+        s_2_2 = #{record.s22,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s33 != null" >
+        s_3_3 = #{record.s33,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s44 != null" >
+        s_4_4 = #{record.s44,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s55 != null" >
+        s_5_5 = #{record.s55,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s66 != null" >
+        s_6_6 = #{record.s66,jdbcType=DOUBLE},
+      </if>
+      <if test="record.s77 != null" >
+        s_7_7 = #{record.s77,jdbcType=DOUBLE},
+      </if>
+      <if test="record.sessionType != null" >
+        session_type = #{record.sessionType,jdbcType=INTEGER},
+      </if>
+      <if test="record.hostType != null" >
+        host_type = #{record.hostType,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.state != null" >
+        state = #{record.state,jdbcType=INTEGER},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update race_rate_score_or
+    set id = #{record.id,jdbcType=INTEGER},
+      race_id = #{record.raceId,jdbcType=VARCHAR},
+      s_1_0 = #{record.s10,jdbcType=DOUBLE},
+      s_2_0 = #{record.s20,jdbcType=DOUBLE},
+      s_2_1 = #{record.s21,jdbcType=DOUBLE},
+      s_3_0 = #{record.s30,jdbcType=DOUBLE},
+      s_3_1 = #{record.s31,jdbcType=DOUBLE},
+      s_3_2 = #{record.s32,jdbcType=DOUBLE},
+      s_4_0 = #{record.s40,jdbcType=DOUBLE},
+      s_4_1 = #{record.s41,jdbcType=DOUBLE},
+      s_4_2 = #{record.s42,jdbcType=DOUBLE},
+      s_4_3 = #{record.s43,jdbcType=DOUBLE},
+      s_5_0 = #{record.s50,jdbcType=DOUBLE},
+      s_5_1 = #{record.s51,jdbcType=DOUBLE},
+      s_5_2 = #{record.s52,jdbcType=DOUBLE},
+      s_5_3 = #{record.s53,jdbcType=DOUBLE},
+      s_5_4 = #{record.s54,jdbcType=DOUBLE},
+      s_6_0 = #{record.s60,jdbcType=DOUBLE},
+      s_6_1 = #{record.s61,jdbcType=DOUBLE},
+      s_6_2 = #{record.s62,jdbcType=DOUBLE},
+      s_6_3 = #{record.s63,jdbcType=DOUBLE},
+      s_6_4 = #{record.s64,jdbcType=DOUBLE},
+      s_6_5 = #{record.s65,jdbcType=DOUBLE},
+      s_7_0 = #{record.s70,jdbcType=DOUBLE},
+      s_7_1 = #{record.s71,jdbcType=DOUBLE},
+      s_7_2 = #{record.s72,jdbcType=DOUBLE},
+      s_7_3 = #{record.s73,jdbcType=DOUBLE},
+      s_7_4 = #{record.s74,jdbcType=DOUBLE},
+      s_7_5 = #{record.s75,jdbcType=DOUBLE},
+      s_7_6 = #{record.s76,jdbcType=DOUBLE},
+      s_0_0 = #{record.s00,jdbcType=DOUBLE},
+      s_1_1 = #{record.s11,jdbcType=DOUBLE},
+      s_2_2 = #{record.s22,jdbcType=DOUBLE},
+      s_3_3 = #{record.s33,jdbcType=DOUBLE},
+      s_4_4 = #{record.s44,jdbcType=DOUBLE},
+      s_5_5 = #{record.s55,jdbcType=DOUBLE},
+      s_6_6 = #{record.s66,jdbcType=DOUBLE},
+      s_7_7 = #{record.s77,jdbcType=DOUBLE},
+      session_type = #{record.sessionType,jdbcType=INTEGER},
+      host_type = #{record.hostType,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      state = #{record.state,jdbcType=INTEGER},
+      remark = #{record.remark,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.unknow.spiderparent.entity.RaceRateScoreOr" >
+    update race_rate_score_or
+    <set >
+      <if test="raceId != null" >
+        race_id = #{raceId,jdbcType=VARCHAR},
+      </if>
+      <if test="s10 != null" >
+        s_1_0 = #{s10,jdbcType=DOUBLE},
+      </if>
+      <if test="s20 != null" >
+        s_2_0 = #{s20,jdbcType=DOUBLE},
+      </if>
+      <if test="s21 != null" >
+        s_2_1 = #{s21,jdbcType=DOUBLE},
+      </if>
+      <if test="s30 != null" >
+        s_3_0 = #{s30,jdbcType=DOUBLE},
+      </if>
+      <if test="s31 != null" >
+        s_3_1 = #{s31,jdbcType=DOUBLE},
+      </if>
+      <if test="s32 != null" >
+        s_3_2 = #{s32,jdbcType=DOUBLE},
+      </if>
+      <if test="s40 != null" >
+        s_4_0 = #{s40,jdbcType=DOUBLE},
+      </if>
+      <if test="s41 != null" >
+        s_4_1 = #{s41,jdbcType=DOUBLE},
+      </if>
+      <if test="s42 != null" >
+        s_4_2 = #{s42,jdbcType=DOUBLE},
+      </if>
+      <if test="s43 != null" >
+        s_4_3 = #{s43,jdbcType=DOUBLE},
+      </if>
+      <if test="s50 != null" >
+        s_5_0 = #{s50,jdbcType=DOUBLE},
+      </if>
+      <if test="s51 != null" >
+        s_5_1 = #{s51,jdbcType=DOUBLE},
+      </if>
+      <if test="s52 != null" >
+        s_5_2 = #{s52,jdbcType=DOUBLE},
+      </if>
+      <if test="s53 != null" >
+        s_5_3 = #{s53,jdbcType=DOUBLE},
+      </if>
+      <if test="s54 != null" >
+        s_5_4 = #{s54,jdbcType=DOUBLE},
+      </if>
+      <if test="s60 != null" >
+        s_6_0 = #{s60,jdbcType=DOUBLE},
+      </if>
+      <if test="s61 != null" >
+        s_6_1 = #{s61,jdbcType=DOUBLE},
+      </if>
+      <if test="s62 != null" >
+        s_6_2 = #{s62,jdbcType=DOUBLE},
+      </if>
+      <if test="s63 != null" >
+        s_6_3 = #{s63,jdbcType=DOUBLE},
+      </if>
+      <if test="s64 != null" >
+        s_6_4 = #{s64,jdbcType=DOUBLE},
+      </if>
+      <if test="s65 != null" >
+        s_6_5 = #{s65,jdbcType=DOUBLE},
+      </if>
+      <if test="s70 != null" >
+        s_7_0 = #{s70,jdbcType=DOUBLE},
+      </if>
+      <if test="s71 != null" >
+        s_7_1 = #{s71,jdbcType=DOUBLE},
+      </if>
+      <if test="s72 != null" >
+        s_7_2 = #{s72,jdbcType=DOUBLE},
+      </if>
+      <if test="s73 != null" >
+        s_7_3 = #{s73,jdbcType=DOUBLE},
+      </if>
+      <if test="s74 != null" >
+        s_7_4 = #{s74,jdbcType=DOUBLE},
+      </if>
+      <if test="s75 != null" >
+        s_7_5 = #{s75,jdbcType=DOUBLE},
+      </if>
+      <if test="s76 != null" >
+        s_7_6 = #{s76,jdbcType=DOUBLE},
+      </if>
+      <if test="s00 != null" >
+        s_0_0 = #{s00,jdbcType=DOUBLE},
+      </if>
+      <if test="s11 != null" >
+        s_1_1 = #{s11,jdbcType=DOUBLE},
+      </if>
+      <if test="s22 != null" >
+        s_2_2 = #{s22,jdbcType=DOUBLE},
+      </if>
+      <if test="s33 != null" >
+        s_3_3 = #{s33,jdbcType=DOUBLE},
+      </if>
+      <if test="s44 != null" >
+        s_4_4 = #{s44,jdbcType=DOUBLE},
+      </if>
+      <if test="s55 != null" >
+        s_5_5 = #{s55,jdbcType=DOUBLE},
+      </if>
+      <if test="s66 != null" >
+        s_6_6 = #{s66,jdbcType=DOUBLE},
+      </if>
+      <if test="s77 != null" >
+        s_7_7 = #{s77,jdbcType=DOUBLE},
+      </if>
+      <if test="sessionType != null" >
+        session_type = #{sessionType,jdbcType=INTEGER},
+      </if>
+      <if test="hostType != null" >
+        host_type = #{hostType,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.unknow.spiderparent.entity.RaceRateScoreOr" >
+    update race_rate_score_or
+    set race_id = #{raceId,jdbcType=VARCHAR},
+      s_1_0 = #{s10,jdbcType=DOUBLE},
+      s_2_0 = #{s20,jdbcType=DOUBLE},
+      s_2_1 = #{s21,jdbcType=DOUBLE},
+      s_3_0 = #{s30,jdbcType=DOUBLE},
+      s_3_1 = #{s31,jdbcType=DOUBLE},
+      s_3_2 = #{s32,jdbcType=DOUBLE},
+      s_4_0 = #{s40,jdbcType=DOUBLE},
+      s_4_1 = #{s41,jdbcType=DOUBLE},
+      s_4_2 = #{s42,jdbcType=DOUBLE},
+      s_4_3 = #{s43,jdbcType=DOUBLE},
+      s_5_0 = #{s50,jdbcType=DOUBLE},
+      s_5_1 = #{s51,jdbcType=DOUBLE},
+      s_5_2 = #{s52,jdbcType=DOUBLE},
+      s_5_3 = #{s53,jdbcType=DOUBLE},
+      s_5_4 = #{s54,jdbcType=DOUBLE},
+      s_6_0 = #{s60,jdbcType=DOUBLE},
+      s_6_1 = #{s61,jdbcType=DOUBLE},
+      s_6_2 = #{s62,jdbcType=DOUBLE},
+      s_6_3 = #{s63,jdbcType=DOUBLE},
+      s_6_4 = #{s64,jdbcType=DOUBLE},
+      s_6_5 = #{s65,jdbcType=DOUBLE},
+      s_7_0 = #{s70,jdbcType=DOUBLE},
+      s_7_1 = #{s71,jdbcType=DOUBLE},
+      s_7_2 = #{s72,jdbcType=DOUBLE},
+      s_7_3 = #{s73,jdbcType=DOUBLE},
+      s_7_4 = #{s74,jdbcType=DOUBLE},
+      s_7_5 = #{s75,jdbcType=DOUBLE},
+      s_7_6 = #{s76,jdbcType=DOUBLE},
+      s_0_0 = #{s00,jdbcType=DOUBLE},
+      s_1_1 = #{s11,jdbcType=DOUBLE},
+      s_2_2 = #{s22,jdbcType=DOUBLE},
+      s_3_3 = #{s33,jdbcType=DOUBLE},
+      s_4_4 = #{s44,jdbcType=DOUBLE},
+      s_5_5 = #{s55,jdbcType=DOUBLE},
+      s_6_6 = #{s66,jdbcType=DOUBLE},
+      s_7_7 = #{s77,jdbcType=DOUBLE},
+      session_type = #{sessionType,jdbcType=INTEGER},
+      host_type = #{hostType,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

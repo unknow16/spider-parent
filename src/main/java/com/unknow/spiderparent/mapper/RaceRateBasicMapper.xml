@@ -1,0 +1,703 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.unknow.spiderparent.mapper.RaceRateBasicMapper" >
+  <resultMap id="BaseResultMap" type="com.unknow.spiderparent.entity.RaceRateBasic" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="race_id" property="raceId" jdbcType="VARCHAR" />
+    <result column="full_host_win" property="fullHostWin" jdbcType="DOUBLE" />
+    <result column="full_guest_win" property="fullGuestWin" jdbcType="DOUBLE" />
+    <result column="full_draw" property="fullDraw" jdbcType="DOUBLE" />
+    <result column="half_host_win" property="halfHostWin" jdbcType="DOUBLE" />
+    <result column="half_guest_win" property="halfGuestWin" jdbcType="DOUBLE" />
+    <result column="half_draw" property="halfDraw" jdbcType="DOUBLE" />
+    <result column="host_host" property="hostHost" jdbcType="DOUBLE" />
+    <result column="draw_host" property="drawHost" jdbcType="DOUBLE" />
+    <result column="guest_host" property="guestHost" jdbcType="DOUBLE" />
+    <result column="draw_draw" property="drawDraw" jdbcType="DOUBLE" />
+    <result column="host_draw" property="hostDraw" jdbcType="DOUBLE" />
+    <result column="guest_draw" property="guestDraw" jdbcType="DOUBLE" />
+    <result column="guest_guest" property="guestGuest" jdbcType="DOUBLE" />
+    <result column="draw_guest" property="drawGuest" jdbcType="DOUBLE" />
+    <result column="host_guest" property="hostGuest" jdbcType="DOUBLE" />
+    <result column="half_score_more" property="halfScoreMore" jdbcType="DOUBLE" />
+    <result column="full_score_more" property="fullScoreMore" jdbcType="DOUBLE" />
+    <result column="half_full_score_draw" property="halfFullScoreDraw" jdbcType="DOUBLE" />
+    <result column="host_first_score" property="hostFirstScore" jdbcType="DOUBLE" />
+    <result column="guest_first_score" property="guestFirstScore" jdbcType="DOUBLE" />
+    <result column="no_score" property="noScore" jdbcType="DOUBLE" />
+    <result column="full_score_range_0_1" property="fullScoreRange01" jdbcType="DOUBLE" />
+    <result column="full_score_range_2_3" property="fullScoreRange23" jdbcType="DOUBLE" />
+    <result column="full_score_range_3_up" property="fullScoreRange3Up" jdbcType="DOUBLE" />
+    <result column="full_score_odd" property="fullScoreOdd" jdbcType="DOUBLE" />
+    <result column="full_score_even" property="fullScoreEven" jdbcType="DOUBLE" />
+    <result column="half_all_score" property="halfAllScore" jdbcType="DOUBLE" />
+    <result column="half_all_score_no" property="halfAllScoreNo" jdbcType="DOUBLE" />
+    <result column="full_all_score" property="fullAllScore" jdbcType="DOUBLE" />
+    <result column="full_all_score_no" property="fullAllScoreNo" jdbcType="DOUBLE" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, race_id, full_host_win, full_guest_win, full_draw, half_host_win, half_guest_win, 
+    half_draw, host_host, draw_host, guest_host, draw_draw, host_draw, guest_draw, guest_guest, 
+    draw_guest, host_guest, half_score_more, full_score_more, half_full_score_draw, host_first_score, 
+    guest_first_score, no_score, full_score_range_0_1, full_score_range_2_3, full_score_range_3_up, 
+    full_score_odd, full_score_even, half_all_score, half_all_score_no, full_all_score, 
+    full_all_score_no, create_time, update_time, state, remark
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.unknow.spiderparent.entity.RaceRateBasicExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from race_rate_basic
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from race_rate_basic
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from race_rate_basic
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.unknow.spiderparent.entity.RaceRateBasicExample" >
+    delete from race_rate_basic
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.unknow.spiderparent.entity.RaceRateBasic" >
+    insert into race_rate_basic (id, race_id, full_host_win, 
+      full_guest_win, full_draw, half_host_win, 
+      half_guest_win, half_draw, host_host, 
+      draw_host, guest_host, draw_draw, 
+      host_draw, guest_draw, guest_guest, 
+      draw_guest, host_guest, half_score_more, 
+      full_score_more, half_full_score_draw, host_first_score, 
+      guest_first_score, no_score, full_score_range_0_1, 
+      full_score_range_2_3, full_score_range_3_up, full_score_odd, 
+      full_score_even, half_all_score, half_all_score_no, 
+      full_all_score, full_all_score_no, create_time, 
+      update_time, state, remark
+      )
+    values (#{id,jdbcType=INTEGER}, #{raceId,jdbcType=VARCHAR}, #{fullHostWin,jdbcType=DOUBLE}, 
+      #{fullGuestWin,jdbcType=DOUBLE}, #{fullDraw,jdbcType=DOUBLE}, #{halfHostWin,jdbcType=DOUBLE}, 
+      #{halfGuestWin,jdbcType=DOUBLE}, #{halfDraw,jdbcType=DOUBLE}, #{hostHost,jdbcType=DOUBLE}, 
+      #{drawHost,jdbcType=DOUBLE}, #{guestHost,jdbcType=DOUBLE}, #{drawDraw,jdbcType=DOUBLE}, 
+      #{hostDraw,jdbcType=DOUBLE}, #{guestDraw,jdbcType=DOUBLE}, #{guestGuest,jdbcType=DOUBLE}, 
+      #{drawGuest,jdbcType=DOUBLE}, #{hostGuest,jdbcType=DOUBLE}, #{halfScoreMore,jdbcType=DOUBLE}, 
+      #{fullScoreMore,jdbcType=DOUBLE}, #{halfFullScoreDraw,jdbcType=DOUBLE}, #{hostFirstScore,jdbcType=DOUBLE}, 
+      #{guestFirstScore,jdbcType=DOUBLE}, #{noScore,jdbcType=DOUBLE}, #{fullScoreRange01,jdbcType=DOUBLE}, 
+      #{fullScoreRange23,jdbcType=DOUBLE}, #{fullScoreRange3Up,jdbcType=DOUBLE}, #{fullScoreOdd,jdbcType=DOUBLE}, 
+      #{fullScoreEven,jdbcType=DOUBLE}, #{halfAllScore,jdbcType=DOUBLE}, #{halfAllScoreNo,jdbcType=DOUBLE}, 
+      #{fullAllScore,jdbcType=DOUBLE}, #{fullAllScoreNo,jdbcType=DOUBLE}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{state,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="id" parameterType="com.unknow.spiderparent.entity.RaceRateBasic" >
+    insert into race_rate_basic
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="raceId != null" >
+        race_id,
+      </if>
+      <if test="fullHostWin != null" >
+        full_host_win,
+      </if>
+      <if test="fullGuestWin != null" >
+        full_guest_win,
+      </if>
+      <if test="fullDraw != null" >
+        full_draw,
+      </if>
+      <if test="halfHostWin != null" >
+        half_host_win,
+      </if>
+      <if test="halfGuestWin != null" >
+        half_guest_win,
+      </if>
+      <if test="halfDraw != null" >
+        half_draw,
+      </if>
+      <if test="hostHost != null" >
+        host_host,
+      </if>
+      <if test="drawHost != null" >
+        draw_host,
+      </if>
+      <if test="guestHost != null" >
+        guest_host,
+      </if>
+      <if test="drawDraw != null" >
+        draw_draw,
+      </if>
+      <if test="hostDraw != null" >
+        host_draw,
+      </if>
+      <if test="guestDraw != null" >
+        guest_draw,
+      </if>
+      <if test="guestGuest != null" >
+        guest_guest,
+      </if>
+      <if test="drawGuest != null" >
+        draw_guest,
+      </if>
+      <if test="hostGuest != null" >
+        host_guest,
+      </if>
+      <if test="halfScoreMore != null" >
+        half_score_more,
+      </if>
+      <if test="fullScoreMore != null" >
+        full_score_more,
+      </if>
+      <if test="halfFullScoreDraw != null" >
+        half_full_score_draw,
+      </if>
+      <if test="hostFirstScore != null" >
+        host_first_score,
+      </if>
+      <if test="guestFirstScore != null" >
+        guest_first_score,
+      </if>
+      <if test="noScore != null" >
+        no_score,
+      </if>
+      <if test="fullScoreRange01 != null" >
+        full_score_range_0_1,
+      </if>
+      <if test="fullScoreRange23 != null" >
+        full_score_range_2_3,
+      </if>
+      <if test="fullScoreRange3Up != null" >
+        full_score_range_3_up,
+      </if>
+      <if test="fullScoreOdd != null" >
+        full_score_odd,
+      </if>
+      <if test="fullScoreEven != null" >
+        full_score_even,
+      </if>
+      <if test="halfAllScore != null" >
+        half_all_score,
+      </if>
+      <if test="halfAllScoreNo != null" >
+        half_all_score_no,
+      </if>
+      <if test="fullAllScore != null" >
+        full_all_score,
+      </if>
+      <if test="fullAllScoreNo != null" >
+        full_all_score_no,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="raceId != null" >
+        #{raceId,jdbcType=VARCHAR},
+      </if>
+      <if test="fullHostWin != null" >
+        #{fullHostWin,jdbcType=DOUBLE},
+      </if>
+      <if test="fullGuestWin != null" >
+        #{fullGuestWin,jdbcType=DOUBLE},
+      </if>
+      <if test="fullDraw != null" >
+        #{fullDraw,jdbcType=DOUBLE},
+      </if>
+      <if test="halfHostWin != null" >
+        #{halfHostWin,jdbcType=DOUBLE},
+      </if>
+      <if test="halfGuestWin != null" >
+        #{halfGuestWin,jdbcType=DOUBLE},
+      </if>
+      <if test="halfDraw != null" >
+        #{halfDraw,jdbcType=DOUBLE},
+      </if>
+      <if test="hostHost != null" >
+        #{hostHost,jdbcType=DOUBLE},
+      </if>
+      <if test="drawHost != null" >
+        #{drawHost,jdbcType=DOUBLE},
+      </if>
+      <if test="guestHost != null" >
+        #{guestHost,jdbcType=DOUBLE},
+      </if>
+      <if test="drawDraw != null" >
+        #{drawDraw,jdbcType=DOUBLE},
+      </if>
+      <if test="hostDraw != null" >
+        #{hostDraw,jdbcType=DOUBLE},
+      </if>
+      <if test="guestDraw != null" >
+        #{guestDraw,jdbcType=DOUBLE},
+      </if>
+      <if test="guestGuest != null" >
+        #{guestGuest,jdbcType=DOUBLE},
+      </if>
+      <if test="drawGuest != null" >
+        #{drawGuest,jdbcType=DOUBLE},
+      </if>
+      <if test="hostGuest != null" >
+        #{hostGuest,jdbcType=DOUBLE},
+      </if>
+      <if test="halfScoreMore != null" >
+        #{halfScoreMore,jdbcType=DOUBLE},
+      </if>
+      <if test="fullScoreMore != null" >
+        #{fullScoreMore,jdbcType=DOUBLE},
+      </if>
+      <if test="halfFullScoreDraw != null" >
+        #{halfFullScoreDraw,jdbcType=DOUBLE},
+      </if>
+      <if test="hostFirstScore != null" >
+        #{hostFirstScore,jdbcType=DOUBLE},
+      </if>
+      <if test="guestFirstScore != null" >
+        #{guestFirstScore,jdbcType=DOUBLE},
+      </if>
+      <if test="noScore != null" >
+        #{noScore,jdbcType=DOUBLE},
+      </if>
+      <if test="fullScoreRange01 != null" >
+        #{fullScoreRange01,jdbcType=DOUBLE},
+      </if>
+      <if test="fullScoreRange23 != null" >
+        #{fullScoreRange23,jdbcType=DOUBLE},
+      </if>
+      <if test="fullScoreRange3Up != null" >
+        #{fullScoreRange3Up,jdbcType=DOUBLE},
+      </if>
+      <if test="fullScoreOdd != null" >
+        #{fullScoreOdd,jdbcType=DOUBLE},
+      </if>
+      <if test="fullScoreEven != null" >
+        #{fullScoreEven,jdbcType=DOUBLE},
+      </if>
+      <if test="halfAllScore != null" >
+        #{halfAllScore,jdbcType=DOUBLE},
+      </if>
+      <if test="halfAllScoreNo != null" >
+        #{halfAllScoreNo,jdbcType=DOUBLE},
+      </if>
+      <if test="fullAllScore != null" >
+        #{fullAllScore,jdbcType=DOUBLE},
+      </if>
+      <if test="fullAllScoreNo != null" >
+        #{fullAllScoreNo,jdbcType=DOUBLE},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.unknow.spiderparent.entity.RaceRateBasicExample" resultType="java.lang.Integer" >
+    select count(*) from race_rate_basic
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update race_rate_basic
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.raceId != null" >
+        race_id = #{record.raceId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fullHostWin != null" >
+        full_host_win = #{record.fullHostWin,jdbcType=DOUBLE},
+      </if>
+      <if test="record.fullGuestWin != null" >
+        full_guest_win = #{record.fullGuestWin,jdbcType=DOUBLE},
+      </if>
+      <if test="record.fullDraw != null" >
+        full_draw = #{record.fullDraw,jdbcType=DOUBLE},
+      </if>
+      <if test="record.halfHostWin != null" >
+        half_host_win = #{record.halfHostWin,jdbcType=DOUBLE},
+      </if>
+      <if test="record.halfGuestWin != null" >
+        half_guest_win = #{record.halfGuestWin,jdbcType=DOUBLE},
+      </if>
+      <if test="record.halfDraw != null" >
+        half_draw = #{record.halfDraw,jdbcType=DOUBLE},
+      </if>
+      <if test="record.hostHost != null" >
+        host_host = #{record.hostHost,jdbcType=DOUBLE},
+      </if>
+      <if test="record.drawHost != null" >
+        draw_host = #{record.drawHost,jdbcType=DOUBLE},
+      </if>
+      <if test="record.guestHost != null" >
+        guest_host = #{record.guestHost,jdbcType=DOUBLE},
+      </if>
+      <if test="record.drawDraw != null" >
+        draw_draw = #{record.drawDraw,jdbcType=DOUBLE},
+      </if>
+      <if test="record.hostDraw != null" >
+        host_draw = #{record.hostDraw,jdbcType=DOUBLE},
+      </if>
+      <if test="record.guestDraw != null" >
+        guest_draw = #{record.guestDraw,jdbcType=DOUBLE},
+      </if>
+      <if test="record.guestGuest != null" >
+        guest_guest = #{record.guestGuest,jdbcType=DOUBLE},
+      </if>
+      <if test="record.drawGuest != null" >
+        draw_guest = #{record.drawGuest,jdbcType=DOUBLE},
+      </if>
+      <if test="record.hostGuest != null" >
+        host_guest = #{record.hostGuest,jdbcType=DOUBLE},
+      </if>
+      <if test="record.halfScoreMore != null" >
+        half_score_more = #{record.halfScoreMore,jdbcType=DOUBLE},
+      </if>
+      <if test="record.fullScoreMore != null" >
+        full_score_more = #{record.fullScoreMore,jdbcType=DOUBLE},
+      </if>
+      <if test="record.halfFullScoreDraw != null" >
+        half_full_score_draw = #{record.halfFullScoreDraw,jdbcType=DOUBLE},
+      </if>
+      <if test="record.hostFirstScore != null" >
+        host_first_score = #{record.hostFirstScore,jdbcType=DOUBLE},
+      </if>
+      <if test="record.guestFirstScore != null" >
+        guest_first_score = #{record.guestFirstScore,jdbcType=DOUBLE},
+      </if>
+      <if test="record.noScore != null" >
+        no_score = #{record.noScore,jdbcType=DOUBLE},
+      </if>
+      <if test="record.fullScoreRange01 != null" >
+        full_score_range_0_1 = #{record.fullScoreRange01,jdbcType=DOUBLE},
+      </if>
+      <if test="record.fullScoreRange23 != null" >
+        full_score_range_2_3 = #{record.fullScoreRange23,jdbcType=DOUBLE},
+      </if>
+      <if test="record.fullScoreRange3Up != null" >
+        full_score_range_3_up = #{record.fullScoreRange3Up,jdbcType=DOUBLE},
+      </if>
+      <if test="record.fullScoreOdd != null" >
+        full_score_odd = #{record.fullScoreOdd,jdbcType=DOUBLE},
+      </if>
+      <if test="record.fullScoreEven != null" >
+        full_score_even = #{record.fullScoreEven,jdbcType=DOUBLE},
+      </if>
+      <if test="record.halfAllScore != null" >
+        half_all_score = #{record.halfAllScore,jdbcType=DOUBLE},
+      </if>
+      <if test="record.halfAllScoreNo != null" >
+        half_all_score_no = #{record.halfAllScoreNo,jdbcType=DOUBLE},
+      </if>
+      <if test="record.fullAllScore != null" >
+        full_all_score = #{record.fullAllScore,jdbcType=DOUBLE},
+      </if>
+      <if test="record.fullAllScoreNo != null" >
+        full_all_score_no = #{record.fullAllScoreNo,jdbcType=DOUBLE},
+      </if>
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null" >
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.state != null" >
+        state = #{record.state,jdbcType=INTEGER},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update race_rate_basic
+    set id = #{record.id,jdbcType=INTEGER},
+      race_id = #{record.raceId,jdbcType=VARCHAR},
+      full_host_win = #{record.fullHostWin,jdbcType=DOUBLE},
+      full_guest_win = #{record.fullGuestWin,jdbcType=DOUBLE},
+      full_draw = #{record.fullDraw,jdbcType=DOUBLE},
+      half_host_win = #{record.halfHostWin,jdbcType=DOUBLE},
+      half_guest_win = #{record.halfGuestWin,jdbcType=DOUBLE},
+      half_draw = #{record.halfDraw,jdbcType=DOUBLE},
+      host_host = #{record.hostHost,jdbcType=DOUBLE},
+      draw_host = #{record.drawHost,jdbcType=DOUBLE},
+      guest_host = #{record.guestHost,jdbcType=DOUBLE},
+      draw_draw = #{record.drawDraw,jdbcType=DOUBLE},
+      host_draw = #{record.hostDraw,jdbcType=DOUBLE},
+      guest_draw = #{record.guestDraw,jdbcType=DOUBLE},
+      guest_guest = #{record.guestGuest,jdbcType=DOUBLE},
+      draw_guest = #{record.drawGuest,jdbcType=DOUBLE},
+      host_guest = #{record.hostGuest,jdbcType=DOUBLE},
+      half_score_more = #{record.halfScoreMore,jdbcType=DOUBLE},
+      full_score_more = #{record.fullScoreMore,jdbcType=DOUBLE},
+      half_full_score_draw = #{record.halfFullScoreDraw,jdbcType=DOUBLE},
+      host_first_score = #{record.hostFirstScore,jdbcType=DOUBLE},
+      guest_first_score = #{record.guestFirstScore,jdbcType=DOUBLE},
+      no_score = #{record.noScore,jdbcType=DOUBLE},
+      full_score_range_0_1 = #{record.fullScoreRange01,jdbcType=DOUBLE},
+      full_score_range_2_3 = #{record.fullScoreRange23,jdbcType=DOUBLE},
+      full_score_range_3_up = #{record.fullScoreRange3Up,jdbcType=DOUBLE},
+      full_score_odd = #{record.fullScoreOdd,jdbcType=DOUBLE},
+      full_score_even = #{record.fullScoreEven,jdbcType=DOUBLE},
+      half_all_score = #{record.halfAllScore,jdbcType=DOUBLE},
+      half_all_score_no = #{record.halfAllScoreNo,jdbcType=DOUBLE},
+      full_all_score = #{record.fullAllScore,jdbcType=DOUBLE},
+      full_all_score_no = #{record.fullAllScoreNo,jdbcType=DOUBLE},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      state = #{record.state,jdbcType=INTEGER},
+      remark = #{record.remark,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.unknow.spiderparent.entity.RaceRateBasic" >
+    update race_rate_basic
+    <set >
+      <if test="raceId != null" >
+        race_id = #{raceId,jdbcType=VARCHAR},
+      </if>
+      <if test="fullHostWin != null" >
+        full_host_win = #{fullHostWin,jdbcType=DOUBLE},
+      </if>
+      <if test="fullGuestWin != null" >
+        full_guest_win = #{fullGuestWin,jdbcType=DOUBLE},
+      </if>
+      <if test="fullDraw != null" >
+        full_draw = #{fullDraw,jdbcType=DOUBLE},
+      </if>
+      <if test="halfHostWin != null" >
+        half_host_win = #{halfHostWin,jdbcType=DOUBLE},
+      </if>
+      <if test="halfGuestWin != null" >
+        half_guest_win = #{halfGuestWin,jdbcType=DOUBLE},
+      </if>
+      <if test="halfDraw != null" >
+        half_draw = #{halfDraw,jdbcType=DOUBLE},
+      </if>
+      <if test="hostHost != null" >
+        host_host = #{hostHost,jdbcType=DOUBLE},
+      </if>
+      <if test="drawHost != null" >
+        draw_host = #{drawHost,jdbcType=DOUBLE},
+      </if>
+      <if test="guestHost != null" >
+        guest_host = #{guestHost,jdbcType=DOUBLE},
+      </if>
+      <if test="drawDraw != null" >
+        draw_draw = #{drawDraw,jdbcType=DOUBLE},
+      </if>
+      <if test="hostDraw != null" >
+        host_draw = #{hostDraw,jdbcType=DOUBLE},
+      </if>
+      <if test="guestDraw != null" >
+        guest_draw = #{guestDraw,jdbcType=DOUBLE},
+      </if>
+      <if test="guestGuest != null" >
+        guest_guest = #{guestGuest,jdbcType=DOUBLE},
+      </if>
+      <if test="drawGuest != null" >
+        draw_guest = #{drawGuest,jdbcType=DOUBLE},
+      </if>
+      <if test="hostGuest != null" >
+        host_guest = #{hostGuest,jdbcType=DOUBLE},
+      </if>
+      <if test="halfScoreMore != null" >
+        half_score_more = #{halfScoreMore,jdbcType=DOUBLE},
+      </if>
+      <if test="fullScoreMore != null" >
+        full_score_more = #{fullScoreMore,jdbcType=DOUBLE},
+      </if>
+      <if test="halfFullScoreDraw != null" >
+        half_full_score_draw = #{halfFullScoreDraw,jdbcType=DOUBLE},
+      </if>
+      <if test="hostFirstScore != null" >
+        host_first_score = #{hostFirstScore,jdbcType=DOUBLE},
+      </if>
+      <if test="guestFirstScore != null" >
+        guest_first_score = #{guestFirstScore,jdbcType=DOUBLE},
+      </if>
+      <if test="noScore != null" >
+        no_score = #{noScore,jdbcType=DOUBLE},
+      </if>
+      <if test="fullScoreRange01 != null" >
+        full_score_range_0_1 = #{fullScoreRange01,jdbcType=DOUBLE},
+      </if>
+      <if test="fullScoreRange23 != null" >
+        full_score_range_2_3 = #{fullScoreRange23,jdbcType=DOUBLE},
+      </if>
+      <if test="fullScoreRange3Up != null" >
+        full_score_range_3_up = #{fullScoreRange3Up,jdbcType=DOUBLE},
+      </if>
+      <if test="fullScoreOdd != null" >
+        full_score_odd = #{fullScoreOdd,jdbcType=DOUBLE},
+      </if>
+      <if test="fullScoreEven != null" >
+        full_score_even = #{fullScoreEven,jdbcType=DOUBLE},
+      </if>
+      <if test="halfAllScore != null" >
+        half_all_score = #{halfAllScore,jdbcType=DOUBLE},
+      </if>
+      <if test="halfAllScoreNo != null" >
+        half_all_score_no = #{halfAllScoreNo,jdbcType=DOUBLE},
+      </if>
+      <if test="fullAllScore != null" >
+        full_all_score = #{fullAllScore,jdbcType=DOUBLE},
+      </if>
+      <if test="fullAllScoreNo != null" >
+        full_all_score_no = #{fullAllScoreNo,jdbcType=DOUBLE},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.unknow.spiderparent.entity.RaceRateBasic" >
+    update race_rate_basic
+    set race_id = #{raceId,jdbcType=VARCHAR},
+      full_host_win = #{fullHostWin,jdbcType=DOUBLE},
+      full_guest_win = #{fullGuestWin,jdbcType=DOUBLE},
+      full_draw = #{fullDraw,jdbcType=DOUBLE},
+      half_host_win = #{halfHostWin,jdbcType=DOUBLE},
+      half_guest_win = #{halfGuestWin,jdbcType=DOUBLE},
+      half_draw = #{halfDraw,jdbcType=DOUBLE},
+      host_host = #{hostHost,jdbcType=DOUBLE},
+      draw_host = #{drawHost,jdbcType=DOUBLE},
+      guest_host = #{guestHost,jdbcType=DOUBLE},
+      draw_draw = #{drawDraw,jdbcType=DOUBLE},
+      host_draw = #{hostDraw,jdbcType=DOUBLE},
+      guest_draw = #{guestDraw,jdbcType=DOUBLE},
+      guest_guest = #{guestGuest,jdbcType=DOUBLE},
+      draw_guest = #{drawGuest,jdbcType=DOUBLE},
+      host_guest = #{hostGuest,jdbcType=DOUBLE},
+      half_score_more = #{halfScoreMore,jdbcType=DOUBLE},
+      full_score_more = #{fullScoreMore,jdbcType=DOUBLE},
+      half_full_score_draw = #{halfFullScoreDraw,jdbcType=DOUBLE},
+      host_first_score = #{hostFirstScore,jdbcType=DOUBLE},
+      guest_first_score = #{guestFirstScore,jdbcType=DOUBLE},
+      no_score = #{noScore,jdbcType=DOUBLE},
+      full_score_range_0_1 = #{fullScoreRange01,jdbcType=DOUBLE},
+      full_score_range_2_3 = #{fullScoreRange23,jdbcType=DOUBLE},
+      full_score_range_3_up = #{fullScoreRange3Up,jdbcType=DOUBLE},
+      full_score_odd = #{fullScoreOdd,jdbcType=DOUBLE},
+      full_score_even = #{fullScoreEven,jdbcType=DOUBLE},
+      half_all_score = #{halfAllScore,jdbcType=DOUBLE},
+      half_all_score_no = #{halfAllScoreNo,jdbcType=DOUBLE},
+      full_all_score = #{fullAllScore,jdbcType=DOUBLE},
+      full_all_score_no = #{fullAllScoreNo,jdbcType=DOUBLE},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
