@@ -41,17 +41,50 @@ public class RaceInfoController {
 
     @ApiOperation(value = "获取某联赛比赛信息列表数据")
     @GetMapping(value = "/queryRaceInfoList")
-    public BaseResult queryRaceInfoList(@RequestParam(required = true, defaultValue = "1", value = "type") Integer type) throws Exception {
+    public BaseResult queryRaceInfoList(
+            @RequestParam(required = true,
+                    defaultValue = "1",
+                    value = "type") Integer type) throws Exception {
         List<RaceInfo> raceInfos = raceInfoService.queryRaceInfoList(type);
         return BaseResult.ok("获取联赛比赛信息列表数据成功", raceInfos);
     }
 
-    @ApiOperation(value = "抓取更新某联赛比赛信息列表数据")
-    @GetMapping(value = "/fetchRaceInfoList")
-    public BaseResult fetchRaceInfoList(@RequestParam(required = true, defaultValue = "1", value = "type") Integer type) throws Exception {
-        List<RaceInfo> raceInfos = raceInfoService.fetchRaceInfoList(type);
-        return BaseResult.ok("抓取更新联赛比赛信息列表数据成功", raceInfos);
+    @ApiOperation(value = "获取某联赛比赛信息列表数据和赔率数据")
+    @GetMapping(value = "/queryRaceInfoListAndRate")
+    public BaseResult queryRaceInfoListAndRate(
+            @RequestParam(required = true,
+                    defaultValue = "1",
+                    value = "type") Integer type) throws Exception {
+        List<RaceInfo> raceInfos = raceInfoService.queryRaceInfoList(type);
+        for (RaceInfo raceInfo : raceInfos) {
+            Map<String, Object> rates = raceInfoService.queryRaceRateDetail(raceInfo.getRaceId());
+            raceInfo.setRates(rates);
+        }
+        return BaseResult.ok("获取联赛比赛信息列表数据成功", raceInfos);
     }
+
+    @ApiOperation(value = "获取比赛列表数据和可选赔率")
+    @GetMapping(value = "/queryRaceInfoListAndRateOption")
+    public BaseResult queryRaceInfoListAndRateOption(
+            @RequestParam(required = true,
+                    defaultValue = "1",
+                    value = "type") Integer type, List<String> options) throws Exception {
+
+        return BaseResult.ok("获取成功");
+    }
+
+
+    @ApiOperation(value = "获取某场比赛详情所有数据")
+    @GetMapping(value = "/queryRaceRateDetailAll")
+    public BaseResult queryRaceRateDetailAll(
+            @RequestParam(required = true,
+                    defaultValue = "#AC#B1#C1#D8#E79321987#F3#R0#P^14#Q^37628399#",
+                    value = "raceId") String raceId ) {
+        Map<String, Object> result = raceInfoService.queryRaceRateDetail(raceId);
+        return BaseResult.ok("获取成功！", result);
+    }
+
+
 
     @ApiOperation(value = "获取该场比赛基础项赔率数据")
     @GetMapping(value = "/queryRaceRateBasic")
@@ -91,6 +124,13 @@ public class RaceInfoController {
                     value = "raceId")String raceId) {
         List<RaceRateScoreOr> raceRateScoreOrs = raceInfoService.queryRaceRateScoreOr(raceId);
         return BaseResult.ok("获取成功", raceRateScoreOrs);
+    }
+
+    @ApiOperation(value = "抓取更新某联赛比赛信息列表数据")
+    @GetMapping(value = "/fetchRaceInfoList")
+    public BaseResult fetchRaceInfoList(@RequestParam(required = true, defaultValue = "1", value = "type") Integer type) throws Exception {
+        List<RaceInfo> raceInfos = raceInfoService.fetchRaceInfoList(type);
+        return BaseResult.ok("抓取更新联赛比赛信息列表数据成功", raceInfos);
     }
 
     @ApiOperation(value = "抓取更新某场比赛 [ 主要盘口 ] 数据")

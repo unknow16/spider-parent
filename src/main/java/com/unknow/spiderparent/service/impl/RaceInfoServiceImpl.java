@@ -13,10 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class RaceInfoServiceImpl implements IRaceInfoService {
@@ -158,6 +155,36 @@ public class RaceInfoServiceImpl implements IRaceInfoService {
     @Override
     public int addRaceInfo(RaceInfo record) {
         return 0;
+    }
+
+    @Override
+    public Map<String, Object> queryRaceRateDetail(String raceId) {
+        Map<String, Object> result = new HashMap<>();
+        RaceRateBasicExample raceRateBasicExample = new RaceRateBasicExample();
+        raceRateBasicExample.createCriteria()
+                .andRaceIdEqualTo(raceId)
+                .andStateEqualTo(1);
+        List<RaceRateBasic> raceRateBasics = raceRateBasicMapper.selectByExample(raceRateBasicExample);
+        if (raceRateBasics != null && raceRateBasics.size() > 0) {
+            result.put("basicInfo", raceRateBasics.get(0));
+        } else {
+            result.put("basicInfo", null);
+        }
+
+        RaceRateNumExample raceRateNumExample = new RaceRateNumExample();
+        raceRateNumExample.createCriteria()
+                .andRaceIdEqualTo(raceId)
+                .andStateEqualTo(1);
+        List<RaceRateNum> raceRateNums = raceRateNumMapper.selectByExample(raceRateNumExample);
+        result.put("enterBallNum", raceRateNums);
+
+        RaceRateScoreOrExample raceRateScoreOrExample = new RaceRateScoreOrExample();
+        raceRateScoreOrExample.createCriteria()
+                .andRaceIdEqualTo(raceId)
+                .andStateEqualTo(1);
+        List<RaceRateScoreOr> raceRateScoreOrs = raceRateScoreOrMapper.selectByExample(raceRateScoreOrExample);
+        result.put("scoreOr", raceRateScoreOrs);
+        return result;
     }
 
 }

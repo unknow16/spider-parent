@@ -1,6 +1,8 @@
 package com.unknow.spiderparent.entity;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class RaceInfo {
     private Integer id;
@@ -24,6 +26,16 @@ public class RaceInfo {
     private Integer state;
 
     private String remark;
+
+    private Map<String, Object> rates;
+
+    public Map<String, Object> getRates() {
+        return rates;
+    }
+
+    public void setRates(Map<String, Object> rates) {
+        this.rates = rates;
+    }
 
     public Integer getId() {
         return id;
