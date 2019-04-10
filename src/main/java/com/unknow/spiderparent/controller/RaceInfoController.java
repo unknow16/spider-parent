@@ -1,6 +1,8 @@
 package com.unknow.spiderparent.controller;
 
 import com.unknow.spiderparent.common.BaseResult;
+import com.unknow.spiderparent.common.OptionVo;
+import com.unknow.spiderparent.common.PageData;
 import com.unknow.spiderparent.common.SpiderException;
 import com.unknow.spiderparent.entity.*;
 import com.unknow.spiderparent.service.IEnterBallDataService;
@@ -12,7 +14,6 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -42,35 +43,44 @@ public class RaceInfoController {
     @ApiOperation(value = "获取某联赛比赛信息列表数据")
     @GetMapping(value = "/queryRaceInfoList")
     public BaseResult queryRaceInfoList(
-            @RequestParam(required = true,
-                    defaultValue = "1",
-                    value = "type") Integer type) throws Exception {
-        List<RaceInfo> raceInfos = raceInfoService.queryRaceInfoList(type);
-        return BaseResult.ok("获取联赛比赛信息列表数据成功", raceInfos);
+            @RequestParam(required = true, defaultValue = "1", value = "type") Integer type,
+            @RequestParam(required = true, defaultValue = "1", value = "pageNum") Integer pageNum,
+            @RequestParam(required = true, defaultValue = "10", value = "pageSize") Integer pageSize) throws Exception {
+        List<RaceInfo> raceInfos = raceInfoService.queryRaceInfoList(type, pageNum, pageSize);
+        int total = raceInfoService.countRaceInfoList(type);
+        return BaseResult.ok("获取联赛比赛信息列表数据成功", PageData.create(raceInfos, total));
     }
+
 
     @ApiOperation(value = "获取某联赛比赛信息列表数据和赔率数据")
     @GetMapping(value = "/queryRaceInfoListAndRate")
     public BaseResult queryRaceInfoListAndRate(
-            @RequestParam(required = true,
-                    defaultValue = "1",
-                    value = "type") Integer type) throws Exception {
-        List<RaceInfo> raceInfos = raceInfoService.queryRaceInfoList(type);
+            @RequestParam(required = true, defaultValue = "1", value = "type") Integer type,
+            @RequestParam(required = true, defaultValue = "1", value = "pageNum") Integer pageNum,
+            @RequestParam(required = true, defaultValue = "10", value = "pageSize") Integer pageSize) throws Exception {
+        List<RaceInfo> raceInfos = raceInfoService.queryRaceInfoList(type, pageNum, pageSize);
         for (RaceInfo raceInfo : raceInfos) {
             Map<String, Object> rates = raceInfoService.queryRaceRateDetail(raceInfo.getRaceId());
             raceInfo.setRates(rates);
         }
-        return BaseResult.ok("获取联赛比赛信息列表数据成功", raceInfos);
+        int total = raceInfoService.countRaceInfoList(type);
+        return BaseResult.ok("获取联赛比赛信息列表数据成功", PageData.create(raceInfos, total));
     }
 
     @ApiOperation(value = "获取比赛列表数据和可选赔率")
     @GetMapping(value = "/queryRaceInfoListAndRateOption")
     public BaseResult queryRaceInfoListAndRateOption(
-            @RequestParam(required = true,
-                    defaultValue = "1",
-                    value = "type") Integer type, List<String> options) throws Exception {
+            @RequestParam(required = true, defaultValue = "1", value = "type") Integer type,
+            @RequestParam(required = true, defaultValue = "1", value = "pageNum") Integer pageNum,
+            @RequestParam(required = true, defaultValue = "10", value = "pageSize") Integer pageSize) throws Exception {
 
-        return BaseResult.ok("获取成功");
+        List<RaceInfo> raceInfos = raceInfoService.queryRaceInfoList(type, pageNum, pageSize);
+        for (RaceInfo raceInfo : raceInfos) {
+            Map<String, Object> rates = raceInfoService.queryRaceRateDetailOption(raceInfo.getRaceId(), null);
+            raceInfo.setRates(rates);
+        }
+        int total = raceInfoService.countRaceInfoList(type);
+        return BaseResult.ok("获取成功", PageData.create(raceInfos, total));
     }
 
 

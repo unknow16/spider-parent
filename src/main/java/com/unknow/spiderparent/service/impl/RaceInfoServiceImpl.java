@@ -1,6 +1,10 @@
 package com.unknow.spiderparent.service.impl;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.unknow.spiderparent.common.BaseConstants;
+import com.unknow.spiderparent.common.OptionVo;
 import com.unknow.spiderparent.entity.*;
 import com.unknow.spiderparent.mapper.*;
 import com.unknow.spiderparent.service.IRaceInfoService;
@@ -102,10 +106,19 @@ public class RaceInfoServiceImpl implements IRaceInfoService {
     }
 
     @Override
-    public List<RaceInfo> queryRaceInfoList(Integer type) throws Exception {
+    public List<RaceInfo> queryRaceInfoList(Integer type, Integer pageNum, Integer pageSize) throws Exception {
         RaceInfoExample raceInfoExample = new RaceInfoExample();
         raceInfoExample.createCriteria().andRaceTypeEqualTo(type);
-        return raceInfoMapper.selectByExample(raceInfoExample);
+        PageHelper.startPage(pageNum, pageSize, false);
+        List<RaceInfo> raceInfos = raceInfoMapper.selectByExample(raceInfoExample);
+        return raceInfos;
+    }
+
+    @Override
+    public int countRaceInfoList(Integer type) {
+        RaceInfoExample raceInfoExample = new RaceInfoExample();
+        raceInfoExample.createCriteria().andRaceTypeEqualTo(type);
+        return raceInfoMapper.countByExample(raceInfoExample);
     }
 
     @Override
@@ -184,6 +197,29 @@ public class RaceInfoServiceImpl implements IRaceInfoService {
                 .andStateEqualTo(1);
         List<RaceRateScoreOr> raceRateScoreOrs = raceRateScoreOrMapper.selectByExample(raceRateScoreOrExample);
         result.put("scoreOr", raceRateScoreOrs);
+        return result;
+    }
+
+    @Override
+    public Map<String, Object> queryRaceRateDetailOption(String raceId, OptionVo options) {
+        Map<String, Object> result = new HashMap<>();
+
+        Map<String, Object> condition = new HashMap<>();
+        condition.put("raceId", raceId);
+
+        condition.put("column_list", "full_host_win,full_guest_win");
+
+        StringBuffer whereSb = new StringBuffer();
+        whereSb.append(" and 1 = 1");
+        condition.put("where_list", whereSb.toString());
+
+        List<RaceRateBasic> raceRateBasics = raceRateBasicMapper.selectByExampleOptions(condition);
+        if (raceRateBasics != null && raceRateBasics.size() > 0) {
+            result.put("basicInfo", raceRateBasics.get(0));
+        } else {
+            result.put("basicInfo", null);
+        }
+
         return result;
     }
 

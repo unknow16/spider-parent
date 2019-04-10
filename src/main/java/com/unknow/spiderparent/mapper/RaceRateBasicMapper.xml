@@ -119,6 +119,25 @@
       order by ${orderByClause}
     </if>
   </select>
+
+  <select id="selectByExampleOptions" resultMap="BaseResultMap" parameterType="map" >
+    select
+    <choose>
+      <when test="column_list !=null and column_list != ''">
+        ${column_list}
+      </when>
+      <otherwise>
+        <include refid="Base_Column_List" />
+      </otherwise>
+    </choose>
+    from race_rate_basic
+    where race_id = #{raceId,jdbcType=VARCHAR}
+    <if test="where_list != null and where_list != ''">
+      ${where_list}
+    </if>
+  </select>
+
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
