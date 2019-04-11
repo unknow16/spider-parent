@@ -120,6 +120,7 @@
     </if>
   </select>
 
+
   <select id="selectByExampleOptions" resultMap="BaseResultMap" parameterType="map" >
     select
     <choose>
@@ -131,10 +132,7 @@
       </otherwise>
     </choose>
     from race_rate_basic
-    where race_id = #{raceId,jdbcType=VARCHAR}
-    <if test="where_list != null and where_list != ''">
-      ${where_list}
-    </if>
+    where race_id = #{raceId,jdbcType=VARCHAR} and state = 1
   </select>
 
 

@@ -1,14 +1,14 @@
 package com.unknow.spiderparent.controller;
 
 import com.unknow.spiderparent.common.BaseResult;
-import com.unknow.spiderparent.common.OptionVo;
-import com.unknow.spiderparent.common.PageData;
 import com.unknow.spiderparent.common.SpiderException;
 import com.unknow.spiderparent.entity.*;
 import com.unknow.spiderparent.service.IEnterBallDataService;
 import com.unknow.spiderparent.service.IMainPanDataService;
 import com.unknow.spiderparent.service.IRaceInfoService;
 import com.unknow.spiderparent.service.IUpDownSectionDataService;
+import com.unknow.spiderparent.vo.OptionVo;
+import com.unknow.spiderparent.vo.PageData;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,18 +68,15 @@ public class RaceInfoController {
     }
 
     @ApiOperation(value = "获取比赛列表数据和可选赔率")
-    @GetMapping(value = "/queryRaceInfoListAndRateOption")
-    public BaseResult queryRaceInfoListAndRateOption(
-            @RequestParam(required = true, defaultValue = "1", value = "type") Integer type,
-            @RequestParam(required = true, defaultValue = "1", value = "pageNum") Integer pageNum,
-            @RequestParam(required = true, defaultValue = "10", value = "pageSize") Integer pageSize) throws Exception {
+    @RequestMapping(value = "/queryRaceInfoListAndRateOption", method = RequestMethod.POST)
+    public BaseResult queryRaceInfoListAndRateOption(@RequestBody OptionVo optionVo ) throws Exception {
 
-        List<RaceInfo> raceInfos = raceInfoService.queryRaceInfoList(type, pageNum, pageSize);
+        List<RaceInfo> raceInfos = raceInfoService.queryRaceInfoList(optionVo.getPageInfo().getType(), optionVo.getPageInfo().getPageNum(), optionVo.getPageInfo().getPageSize());
         for (RaceInfo raceInfo : raceInfos) {
-            Map<String, Object> rates = raceInfoService.queryRaceRateDetailOption(raceInfo.getRaceId(), null);
+            Map<String, Object> rates = raceInfoService.queryRaceRateDetailOption(raceInfo.getRaceId(), optionVo);
             raceInfo.setRates(rates);
         }
-        int total = raceInfoService.countRaceInfoList(type);
+        int total = raceInfoService.countRaceInfoList(optionVo.getPageInfo().getType());
         return BaseResult.ok("获取成功", PageData.create(raceInfos, total));
     }
 
@@ -93,7 +90,6 @@ public class RaceInfoController {
         Map<String, Object> result = raceInfoService.queryRaceRateDetail(raceId);
         return BaseResult.ok("获取成功！", result);
     }
-
 
 
     @ApiOperation(value = "获取该场比赛基础项赔率数据")

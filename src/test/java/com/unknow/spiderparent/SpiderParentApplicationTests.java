@@ -1,10 +1,9 @@
 package com.unknow.spiderparent;
 
+import com.alibaba.fastjson.JSON;
+import com.unknow.spiderparent.vo.OptionVo;
 import com.unknow.spiderparent.entity.RaceInfo;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -14,9 +13,13 @@ import java.util.List;
 //@SpringBootTest
 public class SpiderParentApplicationTests {
 
-//	@Test
-//	public void contextLoads() {
-//	}
+	@Test
+	public void contextLoads() {
+		String s = "{\"pageInfo\":{\"type\":1,\"pageNum\":1,\"pageSize\":10},\"basicInfo\":[\"full_host_win\",\"full_guest_win\"],\"enterBallNum\":{\"type\":[1,2,3],\"columns\":[\"s_1\",\"s_2\"]},\"scoreOr\":{\"columns\":[\"s_1_1\",\"s_2_2\"],\"hostType\":[1],\"sessionType\":[1,2]}}";
+
+		OptionVo optionVo = JSON.parseObject(s, OptionVo.class);
+		System.out.println(optionVo);
+	}
 
 	/**
 	 * ID=cp-79321987-40-2040216004-C5;

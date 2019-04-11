@@ -95,6 +95,29 @@
       order by ${orderByClause}
     </if>
   </select>
+
+
+  <select id="selectByExampleOptions" resultMap="BaseResultMap" parameterType="map">
+    select
+    <choose>
+      <when test="column_list !=null and column_list != ''">
+        type, ${column_list}
+      </when>
+      <otherwise>
+        <include refid="Base_Column_List" />
+      </otherwise>
+    </choose>
+    from race_rate_num
+    where race_id = #{raceId} and state = 1
+    <if test="type_list != null">
+      and type in
+      <foreach collection="type_list" index="index" item="item" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+    </if>
+  </select>
+
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

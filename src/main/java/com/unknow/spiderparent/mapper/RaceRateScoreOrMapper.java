@@ -3,6 +3,8 @@ package com.unknow.spiderparent.mapper;
 import com.unknow.spiderparent.entity.RaceRateScoreOr;
 import com.unknow.spiderparent.entity.RaceRateScoreOrExample;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface RaceRateScoreOrMapper {
@@ -17,6 +19,7 @@ public interface RaceRateScoreOrMapper {
     int insertSelective(RaceRateScoreOr record);
 
     List<RaceRateScoreOr> selectByExample(RaceRateScoreOrExample example);
+    List<RaceRateScoreOr> selectByExampleOptions(Map<String, Object> options);
 
     RaceRateScoreOr selectByPrimaryKey(Integer id);
 
