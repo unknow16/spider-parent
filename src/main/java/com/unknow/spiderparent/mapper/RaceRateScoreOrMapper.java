@@ -20,6 +20,7 @@ public interface RaceRateScoreOrMapper {
 
     List<RaceRateScoreOr> selectByExample(RaceRateScoreOrExample example);
     List<RaceRateScoreOr> selectByExampleOptions(Map<String, Object> options);
+    List<RaceRateScoreOr> selectByExampleOptionsValue(Map<String, Object> options);
 
     RaceRateScoreOr selectByPrimaryKey(Integer id);
 

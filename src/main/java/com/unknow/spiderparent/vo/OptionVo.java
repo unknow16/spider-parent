@@ -39,6 +39,36 @@ import java.util.List;
  *     }
  * }
  */
+
+/**
+ * {
+ *     "pageInfo":{
+ *         "type":1,
+ *         "pageNum":1,
+ *         "pageSize":10
+ *     },
+ *     "basicInfo":[
+ *         {"full_host_win": 12.12},
+ *         {"full_guest_win": 11.11}
+ *     ],
+ *     "enterBallNum":{
+ *         "type": [1],
+ *         "condition": [
+ *              {"s_1": 3.33},
+ *              {"s_2": 3.33}
+ *         ]
+ *     },
+ *     "scoreOr": {
+ *         "hostType": [1],
+ *         "sessionType": [1],
+ *         "condition": [
+ *          {"s_1_1": 5.55}
+ *         ]
+ *     }
+ * }
+ */
+
+
 public class OptionVo {
 
     PageInfo pageInfo;

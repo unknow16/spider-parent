@@ -135,6 +135,24 @@
     where race_id = #{raceId,jdbcType=VARCHAR} and state = 1
   </select>
 
+  <select id="selectByExampleOptionsValue" resultMap="BaseResultMap" parameterType="map">
+
+    select
+    <choose>
+      <when test="column_list !=null and column_list != ''">
+        ${column_list}
+      </when>
+      <otherwise>
+        <include refid="Base_Column_List" />
+      </otherwise>
+    </choose>
+    from race_rate_basic
+    where race_id = #{raceId,jdbcType=VARCHAR} and state = 1
+    <if test="where_cond != null">
+      ${where_cond}
+    </if>
+  </select>
+
 
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 

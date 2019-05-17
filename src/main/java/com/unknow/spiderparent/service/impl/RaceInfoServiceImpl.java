@@ -7,7 +7,10 @@ import com.unknow.spiderparent.mapper.*;
 import com.unknow.spiderparent.service.IRaceInfoService;
 import com.unknow.spiderparent.utils.HttpClientUtil;
 import com.unknow.spiderparent.utils.SpiderUtil;
+import com.unknow.spiderparent.vo.EnterBallNumValue;
+import com.unknow.spiderparent.vo.OptionValueVo;
 import com.unknow.spiderparent.vo.OptionVo;
+import com.unknow.spiderparent.vo.ScoreOrValue;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -273,6 +276,140 @@ public class RaceInfoServiceImpl implements IRaceInfoService {
             List<RaceRateScoreOr> raceRateScoreOrs = raceRateScoreOrMapper.selectByExampleOptions(condition);
             result.put("scoreOr", raceRateScoreOrs);
         }
+        return result;
+    }
+
+    @Override
+    public Map<String, Object> queryRaceRateDetailOptionValue(String raceId, OptionValueVo optionValueVo) throws Exception {
+        Map<String, Object> result = new HashMap<>();
+
+
+
+        // 基础信息
+        if (optionValueVo.getBasicInfo() != null && optionValueVo.getBasicInfo().size() > 0) {
+            Map<String, Object> condition = new HashMap<>();
+            condition.put("raceId", raceId);
+
+            StringBuffer columns = new StringBuffer();
+            StringBuffer whereCondition = new StringBuffer(" and ");
+
+            for (Map<String, Double> map : optionValueVo.getBasicInfo()) {
+                Set<Map.Entry<String, Double>> entrySet = map.entrySet();
+                for (Map.Entry<String, Double> entry : entrySet) {
+                    String key = entry.getKey();
+                    Double value = entry.getValue();
+                    columns.append(key).append(",");
+
+                    if (value.doubleValue() == 0) {
+                        continue;
+                    }
+                    whereCondition.append(key).append(" = ").append(value.toString()).append(" and ");
+                }
+            }
+
+            String columnsStr = columns.toString();
+            condition.put("column_list", columnsStr.substring(0, columnsStr.length() - 1));
+
+            String whereConditionStr = whereCondition.toString();
+            condition.put("where_cond", whereConditionStr.substring(0, whereConditionStr.length() - 5));
+
+            List<RaceRateBasic> raceRateBasics = raceRateBasicMapper.selectByExampleOptionsValue(condition);
+            if (raceRateBasics != null && raceRateBasics.size() > 0) {
+                result.put("basicInfo", raceRateBasics.get(0));
+            } else {
+                result.put("basicInfo", null);
+            }
+        }
+
+        // 进球数
+        EnterBallNumValue enterBallNumValue = optionValueVo.getEnterBallNum();
+        if (enterBallNumValue != null ) {
+            Map<String, Object> condition = new HashMap<>();
+            condition.put("raceId", raceId);
+
+            List<Integer> types = enterBallNumValue.getType();
+            if (types != null && types.size() > 0) {
+                condition.put("type_list", types);
+            }
+
+            List<Map<String, Double>> condList = enterBallNumValue.getCondition();
+            if (condList != null && condList.size() > 0) {
+
+                StringBuffer columns = new StringBuffer();
+                StringBuffer whereCondition = new StringBuffer(" and ");
+                for (Map<String, Double> map : condList) {
+                    Set<Map.Entry<String, Double>> entrySet = map.entrySet();
+
+                    for (Map.Entry<String, Double> entry : entrySet) {
+                        String key = entry.getKey();
+                        Double value = entry.getValue();
+
+                        columns.append(key).append(",");
+
+                        if (value.doubleValue() == 0) {
+                            continue;
+                        }
+                        whereCondition.append(key).append(" = ").append(value.toString()).append(" and ");
+                    }
+                }
+
+                String columnsStr = columns.toString();
+                condition.put("column_list", columnsStr.substring(0, columnsStr.length() - 1));
+
+                String whereConditionStr = whereCondition.toString();
+                condition.put("where_cond", whereConditionStr.substring(0, whereConditionStr.length() - 5));
+            }
+
+            List<RaceRateNum> raceRateNums = raceRateNumMapper.selectByExampleOptionsValue(condition);
+            result.put("enterBallNum", raceRateNums);
+        }
+
+
+        //
+        ScoreOrValue scoreOr = optionValueVo.getScoreOr();
+        if (scoreOr != null) {
+            Map<String, Object> condition = new HashMap<>();
+            condition.put("raceId", raceId);
+
+            if (scoreOr.getHostType() != null && scoreOr.getHostType().size() > 0) {
+                condition.put("host_type_list", scoreOr.getHostType());
+            }
+
+            if (scoreOr.getSessionType() != null && scoreOr.getSessionType().size() > 0) {
+                condition.put("session_type_list", scoreOr.getSessionType());
+            }
+
+            List<Map<String, Double>> scoreOrCondition = scoreOr.getCondition();
+            if (scoreOrCondition != null && scoreOrCondition.size() > 0) {
+
+                StringBuffer columns = new StringBuffer();
+                StringBuffer whereCondition = new StringBuffer(" and ");
+                for (Map<String, Double> map : scoreOrCondition) {
+                    Set<Map.Entry<String, Double>> entrySet = map.entrySet();
+
+                    for (Map.Entry<String, Double> entry : entrySet) {
+                        String key = entry.getKey();
+                        Double value = entry.getValue();
+
+                        columns.append(key).append(",");
+                        whereCondition.append(key).append(" = ").append(value.toString()).append(" and ");
+                    }
+                }
+
+                // String columnsStr = columns.toString();
+                // condition.put("column_list", columnsStr.substring(0, columnsStr.length() - 1));
+
+                String whereConditionStr = whereCondition.toString();
+                condition.put("where_cond", whereConditionStr.substring(0, whereConditionStr.length() - 5));
+
+            }
+
+            List<RaceRateScoreOr> raceRateScoreOrs = raceRateScoreOrMapper.selectByExampleOptionsValue(condition);
+            result.put("scoreOr", raceRateScoreOrs);
+        }
+
+
+
         return result;
     }
 

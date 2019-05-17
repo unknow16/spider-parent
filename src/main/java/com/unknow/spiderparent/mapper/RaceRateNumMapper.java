@@ -20,6 +20,7 @@ public interface RaceRateNumMapper {
 
     List<RaceRateNum> selectByExample(RaceRateNumExample example);
     List<RaceRateNum> selectByExampleOptions(Map<String, Object> options);
+    List<RaceRateNum> selectByExampleOptionsValue(Map<String, Object> options);
 
     RaceRateNum selectByPrimaryKey(Integer id);
 

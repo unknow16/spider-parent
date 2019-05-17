@@ -154,6 +154,39 @@
   </select>
 
 
+  <select id="selectByExampleOptionsValue" resultMap="BaseResultMap" parameterType="map">
+    select
+    <choose>
+      <when test="column_list !=null and column_list != ''">
+        host_type, session_type, ${column_list}
+      </when>
+      <otherwise>
+        <include refid="Base_Column_List" />
+      </otherwise>
+    </choose>
+    from race_rate_score_or
+    where race_id = #{raceId} and state = 1
+
+    <if test="where_cond != null">
+      ${where_cond}
+    </if>
+
+    <if test="host_type_list != null">
+      and host_type in
+      <foreach collection="host_type_list" index="index" item="item" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+    </if>
+
+    <if test="session_type_list != null">
+      and session_type in
+      <foreach collection="session_type_list" index="index" item="item" open="(" separator="," close=")">
+        #{item}
+      </foreach>
+    </if>
+  </select>
+
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
