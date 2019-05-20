@@ -1,6 +1,7 @@
 package com.unknow.spiderparent.service;
 
 import com.unknow.spiderparent.entity.*;
+import com.unknow.spiderparent.vo.OptionValueRequestVo;
 import com.unknow.spiderparent.vo.OptionValueVo;
 import com.unknow.spiderparent.vo.OptionVo;
 
@@ -23,5 +24,5 @@ public interface IRaceInfoService {
 
     Map<String, Object> queryRaceRateDetail(String raceId);
     Map<String, Object> queryRaceRateDetailOption(String raceId, OptionVo optionVo) throws Exception;
-    Map<String, Object> queryRaceRateDetailOptionValue(String raceId, OptionValueVo optionValueVo) throws Exception;
+    Map<String, Object> queryRaceRateDetailOptionValue(String raceId, OptionValueRequestVo optionValueRequestVo) throws Exception;
 }

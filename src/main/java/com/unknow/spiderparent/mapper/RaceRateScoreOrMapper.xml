@@ -171,13 +171,6 @@
       ${where_cond}
     </if>
 
-    <if test="host_type_list != null">
-      and host_type in
-      <foreach collection="host_type_list" index="index" item="item" open="(" separator="," close=")">
-        #{item}
-      </foreach>
-    </if>
-
     <if test="session_type_list != null">
       and session_type in
       <foreach collection="session_type_list" index="index" item="item" open="(" separator="," close=")">

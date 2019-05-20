@@ -7,10 +7,7 @@ import com.unknow.spiderparent.mapper.*;
 import com.unknow.spiderparent.service.IRaceInfoService;
 import com.unknow.spiderparent.utils.HttpClientUtil;
 import com.unknow.spiderparent.utils.SpiderUtil;
-import com.unknow.spiderparent.vo.EnterBallNumValue;
-import com.unknow.spiderparent.vo.OptionValueVo;
-import com.unknow.spiderparent.vo.OptionVo;
-import com.unknow.spiderparent.vo.ScoreOrValue;
+import com.unknow.spiderparent.vo.*;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -44,7 +41,6 @@ public class RaceInfoServiceImpl implements IRaceInfoService {
     private SpiderUtil spiderUtil;
 
     /**
-     *
      * @param type 联赛类型： 1=英超
      * @return
      */
@@ -61,7 +57,7 @@ public class RaceInfoServiceImpl implements IRaceInfoService {
         String[] raceListArray = respOriginContent.split("\\|MA;");
 
         String[] races = null;
-        if (type.intValue() == 5 || type.intValue() ==  7 || type.intValue() == 8) {
+        if (type.intValue() == 5 || type.intValue() == 7 || type.intValue() == 8) {
             races = raceListArray[3].split("\\|PA;");
         } else if (type.intValue() == 6 || type.intValue() == 9) {
             races = raceListArray[4].split("\\|PA;");
@@ -70,10 +66,10 @@ public class RaceInfoServiceImpl implements IRaceInfoService {
         }
         List<RaceInfo> raceInfoList = new ArrayList<>();
 
-        for(int i = 1; i < races.length; i = i+3) {
+        for (int i = 1; i < races.length; i = i + 3) {
             String[] hostInfo = races[i].split(";");
-            String[] guestInfo = races[i+1].split(";");
-            String[] drawInfo = races[i+2].split(";");
+            String[] guestInfo = races[i + 1].split(";");
+            String[] drawInfo = races[i + 2].split(";");
 
             String raceId = drawInfo[4].split("=")[1];
 
@@ -206,7 +202,6 @@ public class RaceInfoServiceImpl implements IRaceInfoService {
         Map<String, Object> result = new HashMap<>();
 
 
-
         // 基础信息
         if (optionVo.getBasicInfo() != null && optionVo.getBasicInfo().size() > 0) {
             Map<String, Object> condition = new HashMap<>();
@@ -228,7 +223,7 @@ public class RaceInfoServiceImpl implements IRaceInfoService {
         }
 
         // 进球数
-        if (optionVo.getEnterBallNum() != null ) {
+        if (optionVo.getEnterBallNum() != null) {
             Map<String, Object> condition = new HashMap<>();
             condition.put("raceId", raceId);
 
@@ -280,17 +275,65 @@ public class RaceInfoServiceImpl implements IRaceInfoService {
     }
 
     @Override
-    public Map<String, Object> queryRaceRateDetailOptionValue(String raceId, OptionValueVo optionValueVo) throws Exception {
+    public Map<String, Object> queryRaceRateDetailOptionValue(String raceId, OptionValueRequestVo optionValueRequestVo) throws Exception {
+
+        OptionValueVo optionValueVo = new OptionValueVo();
+        optionValueVo.setPageInfo(optionValueRequestVo.getPageInfo());
+
+        List<Map<String, Double>> basicInfo = new ArrayList<>();
+        optionValueVo.setBasicInfo(basicInfo);
+
+        EnterBallNumValue enterBallNumValue = new EnterBallNumValue();
+        List<Integer> enterBallNumValueType = new ArrayList<>();
+        List<Map<String, Double>> enterBallNumValueCondition = new ArrayList<>();
+        enterBallNumValue.setType(enterBallNumValueType);
+        enterBallNumValue.setCondition(enterBallNumValueCondition);
+        optionValueVo.setEnterBallNum(enterBallNumValue);
+
+        ScoreOrValue scoreOr = new ScoreOrValue();
+        List<Integer> scoreOrType = new ArrayList<>();
+        List<Map<String, Double>> scoreOrCondition = new ArrayList<>();
+        scoreOr.setSessionType(scoreOrType);
+        scoreOr.setCondition(scoreOrCondition);
+        optionValueVo.setScoreOr(scoreOr);
+
+        Map<String, Double> dynamicMap = optionValueRequestVo.getDynamic();
+        if (dynamicMap != null) {
+            Set<Map.Entry<String, Double>> entrySet = dynamicMap.entrySet();
+            for (Map.Entry<String, Double> entry : entrySet) {
+                String key = entry.getKey();
+                Double value = entry.getValue();
+                if (key.startsWith("basicInfo")) {
+                    String[] split = key.split("&");
+                    Map<String, Double> map = new HashMap<>();
+                    map.put(split[1], value);
+                    basicInfo.add(map);
+                }
+
+                if (key.startsWith("enterBallNum")) {
+                    String[] split = key.split("&");
+                    enterBallNumValueType.add(Integer.parseInt(split[2]));
+                    Map<String, Double> map = new HashMap<>();
+                    map.put(split[1], value);
+                    enterBallNumValueCondition.add(map);
+                }
+
+                if (key.startsWith("scoreOr")) {
+                    String[] split = key.split("&");
+                    scoreOrType.add(Integer.parseInt(split[2]));
+                    Map<String, Double> map = new HashMap<>();
+                    map.put(split[1], value);
+                    scoreOrCondition.add(map);
+                }
+            }
+        }
+
         Map<String, Object> result = new HashMap<>();
-
-
-
         // 基础信息
         if (optionValueVo.getBasicInfo() != null && optionValueVo.getBasicInfo().size() > 0) {
             Map<String, Object> condition = new HashMap<>();
             condition.put("raceId", raceId);
 
-            StringBuffer columns = new StringBuffer();
             StringBuffer whereCondition = new StringBuffer(" and ");
 
             for (Map<String, Double> map : optionValueVo.getBasicInfo()) {
@@ -298,12 +341,22 @@ public class RaceInfoServiceImpl implements IRaceInfoService {
                 for (Map.Entry<String, Double> entry : entrySet) {
                     String key = entry.getKey();
                     Double value = entry.getValue();
-                    columns.append(key).append(",");
 
                     if (value.doubleValue() == 0) {
                         continue;
                     }
                     whereCondition.append(key).append(" = ").append(value.toString()).append(" and ");
+                }
+            }
+
+            StringBuffer columns = new StringBuffer();
+            List<String> main = optionValueRequestVo.getMain();
+            if (main != null && main.size() > 0) {
+                for (String s: main) {
+                    if (s.startsWith("basicInfo")) {
+                        String[] split = s.split("&");
+                        columns.append(split[1]).append(",");
+                    }
                 }
             }
 
@@ -322,21 +375,20 @@ public class RaceInfoServiceImpl implements IRaceInfoService {
         }
 
         // 进球数
-        EnterBallNumValue enterBallNumValue = optionValueVo.getEnterBallNum();
-        if (enterBallNumValue != null ) {
+        EnterBallNumValue enterBallNumValue11 = optionValueVo.getEnterBallNum();
+        if (enterBallNumValue11 != null ) {
             Map<String, Object> condition = new HashMap<>();
             condition.put("raceId", raceId);
 
-            List<Integer> types = enterBallNumValue.getType();
+            List<Integer> types = enterBallNumValue11.getType();
             if (types != null && types.size() > 0) {
                 condition.put("type_list", types);
             }
 
-            List<Map<String, Double>> condList = enterBallNumValue.getCondition();
+            List<Map<String, Double>> condList = enterBallNumValue11.getCondition();
             if (condList != null && condList.size() > 0) {
 
-                StringBuffer columns = new StringBuffer();
-                StringBuffer whereCondition = new StringBuffer(" and ");
+                StringBuffer whereCondition = new StringBuffer(" and (");
                 for (Map<String, Double> map : condList) {
                     Set<Map.Entry<String, Double>> entrySet = map.entrySet();
 
@@ -344,20 +396,18 @@ public class RaceInfoServiceImpl implements IRaceInfoService {
                         String key = entry.getKey();
                         Double value = entry.getValue();
 
-                        columns.append(key).append(",");
-
                         if (value.doubleValue() == 0) {
                             continue;
                         }
-                        whereCondition.append(key).append(" = ").append(value.toString()).append(" and ");
+                        whereCondition.append(key).append(" = ").append(value.toString()).append(" or ");
                     }
                 }
 
-                String columnsStr = columns.toString();
-                condition.put("column_list", columnsStr.substring(0, columnsStr.length() - 1));
+                //String columnsStr = columns.toString();
+                //condition.put("column_list", columnsStr.substring(0, columnsStr.length() - 1));
 
                 String whereConditionStr = whereCondition.toString();
-                condition.put("where_cond", whereConditionStr.substring(0, whereConditionStr.length() - 5));
+                condition.put("where_cond", whereConditionStr.substring(0, whereConditionStr.length() - 5) + ")");
             }
 
             List<RaceRateNum> raceRateNums = raceRateNumMapper.selectByExampleOptionsValue(condition);
@@ -366,25 +416,21 @@ public class RaceInfoServiceImpl implements IRaceInfoService {
 
 
         //
-        ScoreOrValue scoreOr = optionValueVo.getScoreOr();
-        if (scoreOr != null) {
+        ScoreOrValue scoreOr11 = optionValueVo.getScoreOr();
+        if (scoreOr11 != null) {
             Map<String, Object> condition = new HashMap<>();
             condition.put("raceId", raceId);
 
-            if (scoreOr.getHostType() != null && scoreOr.getHostType().size() > 0) {
-                condition.put("host_type_list", scoreOr.getHostType());
+            if (scoreOr11.getSessionType() != null && scoreOr11.getSessionType().size() > 0) {
+                condition.put("session_type_list", scoreOr11.getSessionType());
             }
 
-            if (scoreOr.getSessionType() != null && scoreOr.getSessionType().size() > 0) {
-                condition.put("session_type_list", scoreOr.getSessionType());
-            }
-
-            List<Map<String, Double>> scoreOrCondition = scoreOr.getCondition();
-            if (scoreOrCondition != null && scoreOrCondition.size() > 0) {
+            List<Map<String, Double>> scoreOrCondition11 = scoreOr11.getCondition();
+            if (scoreOrCondition11 != null && scoreOrCondition11.size() > 0) {
 
                 StringBuffer columns = new StringBuffer();
-                StringBuffer whereCondition = new StringBuffer(" and ");
-                for (Map<String, Double> map : scoreOrCondition) {
+                StringBuffer whereCondition = new StringBuffer(" and ( ");
+                for (Map<String, Double> map : scoreOrCondition11) {
                     Set<Map.Entry<String, Double>> entrySet = map.entrySet();
 
                     for (Map.Entry<String, Double> entry : entrySet) {
@@ -392,7 +438,7 @@ public class RaceInfoServiceImpl implements IRaceInfoService {
                         Double value = entry.getValue();
 
                         columns.append(key).append(",");
-                        whereCondition.append(key).append(" = ").append(value.toString()).append(" and ");
+                        whereCondition.append(key).append(" = ").append(value.toString()).append(" or ");
                     }
                 }
 
@@ -400,14 +446,13 @@ public class RaceInfoServiceImpl implements IRaceInfoService {
                 // condition.put("column_list", columnsStr.substring(0, columnsStr.length() - 1));
 
                 String whereConditionStr = whereCondition.toString();
-                condition.put("where_cond", whereConditionStr.substring(0, whereConditionStr.length() - 5));
+                condition.put("where_cond", whereConditionStr.substring(0, whereConditionStr.length() - 5) + " )");
 
             }
 
             List<RaceRateScoreOr> raceRateScoreOrs = raceRateScoreOrMapper.selectByExampleOptionsValue(condition);
             result.put("scoreOr", raceRateScoreOrs);
         }
-
 
 
         return result;

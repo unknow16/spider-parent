@@ -7,6 +7,7 @@ import com.unknow.spiderparent.service.IEnterBallDataService;
 import com.unknow.spiderparent.service.IMainPanDataService;
 import com.unknow.spiderparent.service.IRaceInfoService;
 import com.unknow.spiderparent.service.IUpDownSectionDataService;
+import com.unknow.spiderparent.vo.OptionValueRequestVo;
 import com.unknow.spiderparent.vo.OptionValueVo;
 import com.unknow.spiderparent.vo.OptionVo;
 import com.unknow.spiderparent.vo.PageData;
@@ -81,9 +82,10 @@ public class RaceInfoController {
         return BaseResult.ok("获取成功", PageData.create(raceInfos, total));
     }
 
+
     @ApiOperation(value = "获取比赛列表数据+列筛选+值筛选")
     @RequestMapping(value = "/queryRaceInfoListAndRateOptionValue", method = RequestMethod.POST)
-    public BaseResult queryRaceInfoListAndRateOptionValue(@RequestBody OptionValueVo optionValueVo) throws Exception {
+    public BaseResult queryRaceInfoListAndRateOptionValue(@RequestBody OptionValueRequestVo optionValueVo) throws Exception {
         List<RaceInfo> raceInfos = raceInfoService.queryRaceInfoList(optionValueVo.getPageInfo().getType(), optionValueVo.getPageInfo().getPageNum(), optionValueVo.getPageInfo().getPageSize());
         for (RaceInfo raceInfo : raceInfos) {
             Map<String, Object> rates = raceInfoService.queryRaceRateDetailOptionValue(raceInfo.getRaceId(), optionValueVo);

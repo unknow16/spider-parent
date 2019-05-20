@@ -7,17 +7,8 @@ import java.util.Map;
  */
 public class ScoreOrValue {
 
-    List<Integer> hostType;
     List<Integer> sessionType;
     List<Map<String, Double>> condition;
-
-    public List<Integer> getHostType() {
-        return hostType;
-    }
-
-    public void setHostType(List<Integer> hostType) {
-        this.hostType = hostType;
-    }
 
     public List<Integer> getSessionType() {
         return sessionType;
