@@ -347,6 +347,8 @@ public class RaceInfoServiceImpl implements IRaceInfoService {
                     }
                     whereCondition.append(key).append(" = ").append(value.toString()).append(" and ");
                 }
+                String whereConditionStr = whereCondition.toString();
+                condition.put("where_cond", whereConditionStr.substring(0, whereConditionStr.length() - 5));
             }
 
             StringBuffer columns = new StringBuffer();
@@ -358,13 +360,11 @@ public class RaceInfoServiceImpl implements IRaceInfoService {
                         columns.append(split[1]).append(",");
                     }
                 }
+                String columnsStr = columns.toString();
+                condition.put("column_list", columnsStr.substring(0, columnsStr.length() - 1));
             }
 
-            String columnsStr = columns.toString();
-            condition.put("column_list", columnsStr.substring(0, columnsStr.length() - 1));
 
-            String whereConditionStr = whereCondition.toString();
-            condition.put("where_cond", whereConditionStr.substring(0, whereConditionStr.length() - 5));
 
             List<RaceRateBasic> raceRateBasics = raceRateBasicMapper.selectByExampleOptionsValue(condition);
             if (raceRateBasics != null && raceRateBasics.size() > 0) {
